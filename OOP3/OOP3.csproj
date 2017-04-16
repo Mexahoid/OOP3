@@ -11,7 +11,8 @@
     <RootNamespace>OOP3</RootNamespace>
     <AssemblyName>OOP3</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -46,6 +47,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\FigureLogics\AbstractFactory\IFactoryAbstract.cs" />
+    <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryLine.cs" />
+    <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryEllipse.cs" />
+    <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryRectangle.cs" />
+    <Compile Include="Classes\FigureLogics\Prototype\PrototypeEllipse.cs" />
+    <Compile Include="Classes\FigureLogics\Prototype\PrototypeLine.cs" />
+    <Compile Include="Classes\FigureLogics\Prototype\Prototype.cs" />
+    <Compile Include="Classes\FigureLogics\Prototype\PrototypeRectangle.cs" />
+    <Compile Include="Classes\PictureLogics\FigureController.cs" />
+    <Compile Include="Classes\FigureLogics\FigureClasses\FigureRectangle.cs" />
+    <Compile Include="Classes\FigureLogics\FigureClasses\FigureEllipse.cs" />
+    <Compile Include="Classes\FigureLogics\FigureClasses\FigureLine.cs" />
+    <Compile Include="Classes\FigureLogics\FigureClasses\IFigure.cs" />
+    <Compile Include="Classes\PictureLogics\PictureClass.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,7 +80,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,8 +93,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <Content Include="Resources\Ellips.png" />
+    <Content Include="Resources\MoveNode 0.bmp" />
+    <Content Include="Resources\Pen.png" />
+    <Content Include="Resources\Rect.png" />
+    <Content Include="Resources\Rotate.png" />
+    <Content Include="Resources\Рука.png" />
+    <Content Include="Resources\Стрелка.png" />
+    <Content Include="Resources\Текст.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
