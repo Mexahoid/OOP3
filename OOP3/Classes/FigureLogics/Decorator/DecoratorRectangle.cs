@@ -5,15 +5,14 @@ using System.Text;
 
 namespace OOP3
 {
-    class FigureRectangle : FigureAbstract
+    class DecoratorRectangle : FigureDecorator
     {
-        public FigureRectangle(PictureClass pic) : base(pic)
-        {
-            _points = 4;
-        }
+        public DecoratorRectangle(PictureClass pic) : base(pic)
+        { }
 
         public override void Draw()
         {
+            _figure.Draw();
             throw new NotImplementedException();
         }
 

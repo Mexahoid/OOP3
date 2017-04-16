@@ -7,9 +7,10 @@ namespace OOP3
 {
     class FactoryRectangle : IFactoryAbstract
     {
-        public IFigure CreateFigure()
+        public FigureAbstract CreateFigure()
         {
-            return new FigureRectangle();
+            //return new FigureRectangle();
+            throw new NotImplementedException();
         }
     }
 }

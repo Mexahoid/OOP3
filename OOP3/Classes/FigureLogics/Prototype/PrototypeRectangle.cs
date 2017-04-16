@@ -7,11 +7,12 @@ namespace OOP3
 {
     class PrototypeRectangle : Prototype
     {
-        private readonly IFigure _figureRectangle;
+        private readonly FigureAbstract _figureRectangle;
 
         public PrototypeRectangle()
         {
-            _figureRectangle = new FigureRectangle();
+            throw new NotImplementedException();
+            //_figureRectangle = new FigureRectangle();
         }
     }
 }

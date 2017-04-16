@@ -13,7 +13,7 @@ namespace OOP3
         {
             _figurePrototype = new PrototypeEllipse();
         }
-        public IFigure CreateFigure()
+        public FigureAbstract CreateFigure()
         {
             throw new NotImplementedException();
         }

@@ -7,7 +7,7 @@ namespace OOP3
 {
     class FactoryLine : IFactoryAbstract
     {
-        public IFigure CreateFigure()
+        public FigureAbstract CreateFigure()
         {
             throw new NotImplementedException();
         }

@@ -5,8 +5,7 @@ using System.Text;
 
 namespace OOP3
 {
-    interface IFactoryAbstract
+    class DecoratorLine
     {
-        FigureAbstract CreateFigure();
     }
 }
