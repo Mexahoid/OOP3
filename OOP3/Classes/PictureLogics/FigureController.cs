@@ -19,9 +19,9 @@ namespace OOP3
             _factories = new List<IFactoryAbstract>();
             _figures = new List<FigureAbstract>();
             _picture = new PictureClass(Canvas);
-            _factories.Add(new FactoryEllipse());
-            _factories.Add(new FactoryLine());
-            _factories.Add(new FactoryRectangle());
+            _factories.Add(new FactoryEllipse(_picture));
+            _factories.Add(new FactoryLine(_picture));
+            _factories.Add(new FactoryRectangle(_picture));
         }
 
         public void CreateFigure(int Type)

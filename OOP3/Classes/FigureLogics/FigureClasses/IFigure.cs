@@ -21,5 +21,7 @@ namespace OOP3
         /// <param name="rdX">X нижнего правого угла.</param>
         /// <param name="rdY">Y нижнего правого угла</param>
         void IsInSelectionArea(double luX, double luY, double rdX, double rdY);
+
+        FigureAbstract Clone();
     }
 }

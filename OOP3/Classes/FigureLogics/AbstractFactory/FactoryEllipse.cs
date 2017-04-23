@@ -7,16 +7,16 @@ namespace OOP3
 {
     class FactoryEllipse : IFactoryAbstract
     {
-        private Prototype _figurePrototype;
-        private PictureClass _picController;
+        private readonly FigureEllipse _protoEll;
 
-        public FactoryEllipse()
+        public FactoryEllipse(PictureClass PicController)
         {
-            _figurePrototype = new PrototypeEllipse();
+            _protoEll = new FigureEllipse(PicController);
         }
+
         public FigureAbstract CreateFigure()
         {
-            return new FigureEllipse(_picController);
+            return _protoEll.Clone();
         }
     }
 }

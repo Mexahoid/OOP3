@@ -7,9 +7,16 @@ namespace OOP3
 {
     class FactoryLine : IFactoryAbstract
     {
+        private readonly FigureLine _protoLine;
+
+        public FactoryLine(PictureClass PicController)
+        {
+            _protoLine = new FigureLine(PicController);
+        }
+
         public FigureAbstract CreateFigure()
         {
-            throw new NotImplementedException();
+            return _protoLine.Clone();
         }
     }
 }

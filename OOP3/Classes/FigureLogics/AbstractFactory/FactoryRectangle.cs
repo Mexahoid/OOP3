@@ -7,10 +7,16 @@ namespace OOP3
 {
     class FactoryRectangle : IFactoryAbstract
     {
+        private readonly FigureRectangle _protoRect;
+
+        public FactoryRectangle(PictureClass PicController)
+        {
+            _protoRect = new FigureRectangle(PicController);
+        }
+
         public FigureAbstract CreateFigure()
         {
-            //return new FigureRectangle();
-            throw new NotImplementedException();
+            return _protoRect.Clone();
         }
     }
 }

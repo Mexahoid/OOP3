@@ -98,5 +98,10 @@ namespace OOP3
         {
             _selected = _corners[1, 0] < rdY || _corners[1, 2] > luY || _corners[0, 2] < luX || _corners[0, 0] > rdX;
         }
+
+        public FigureAbstract Clone()
+        {
+            return (FigureAbstract)MemberwiseClone();
+        }
     }
 }
