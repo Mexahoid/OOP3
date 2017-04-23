@@ -23,7 +23,7 @@ namespace OOP3
             throw new NotImplementedException();
         }
 
-        public override void SelectionDraw(double x, double y)
+        public override void ChangeSize(double x, double y)
         {
             throw new NotImplementedException();
         }

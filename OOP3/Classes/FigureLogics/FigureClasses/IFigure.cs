@@ -7,7 +7,7 @@ namespace OOP3
 {
     interface IFigure
     {
-        void SelectionDraw(double x, double y);
+        void ChangeSize(double x, double y);
 
         void MoveObj(double dx, double dy);
 
@@ -22,6 +22,10 @@ namespace OOP3
         /// <param name="rdY">Y нижнего правого угла</param>
         void IsInSelectionArea(double luX, double luY, double rdX, double rdY);
 
+        void PlaceFigure(double x, double y);
+
         FigureAbstract Clone();
+
+        void SelectPoint(double x, double y);
     }
 }

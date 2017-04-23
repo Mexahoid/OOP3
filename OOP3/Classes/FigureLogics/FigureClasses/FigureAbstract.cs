@@ -14,7 +14,7 @@ namespace OOP3
         protected bool _selected;
         protected int _points;
 
-
+        protected int _selectedPoint;
 
         public bool Selected { get { return _selected; } set { _selected = value; } }
 
@@ -41,13 +41,11 @@ namespace OOP3
 
         protected void ResetPoints()
         {
-            int C = _x.Count;
-
             double xMax = double.MinValue;
             double yMax = double.MinValue;
             double xMin = double.MaxValue;
             double yMin = double.MaxValue;
-            for (int i = 0; i < C; i++)
+            for (int i = 0; i < _points; i++)
             {
                 if (_x[i] > xMax)
                 {
@@ -81,7 +79,19 @@ namespace OOP3
 
         }
 
-        public abstract void SelectionDraw(double x, double y);
+        public virtual void ChangeSize(double x, double y)
+        {
+            //Правый нижний угол
+            _corners[0, 2] = x;
+            _corners[1, 2] = y;
+
+            //Левый нижний угол
+            _corners[1, 3] = y;
+
+            //Правый верхний угол
+            _corners[0, 1] = x;
+
+        }
 
         public abstract void MoveObj(double dx, double dy);
 
@@ -102,6 +112,25 @@ namespace OOP3
         public FigureAbstract Clone()
         {
             return (FigureAbstract)MemberwiseClone();
+        }
+
+        public virtual void PlaceFigure(double x, double y)
+        {
+            _corners[0, 0] = _corners[0, 1] = _corners[0, 2] = _corners[0, 3] = x;
+            _corners[1, 0] = _corners[1, 1] = _corners[1, 2] = _corners[1, 3] = y;
+        }
+
+        public virtual void SelectPoint(double x, double y)
+        {
+            double e = 2.0;
+            for (int i = 0; i < _points; i++)
+            {
+                if(Math.Sqrt((x - _x[i]) * (x - _x[i]) + (y - _y[i]) * (y - _y[i])) <= e)
+                {
+                    _selectedPoint = i;
+                    break;
+                }
+            }
         }
     }
 }

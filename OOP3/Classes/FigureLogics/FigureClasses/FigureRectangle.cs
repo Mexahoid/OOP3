@@ -22,9 +22,21 @@ namespace OOP3
             throw new NotImplementedException();
         }
         
-        public override void SelectionDraw(double x, double y)
+        public override void ChangeSize(double x, double y)
         {
-            throw new NotImplementedException();
+            base.ChangeSize(x, y);
+            _x[1] = x;
+            _x[2] = x;
+
+            _y[2] = y;
+            _y[3] = y;
+        }
+
+        public override void PlaceFigure(double x, double y)
+        {
+            base.PlaceFigure(x, y);
+            _x.AddRange(new double[] { x, x, x, x });
+            _y.AddRange(new double[] { y, y, y, y });
         }
     }
 }

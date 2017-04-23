@@ -47,7 +47,7 @@ namespace OOP3
             return _figures;
         }
 
-        public override void SelectionDraw(double x, double y)
+        public override void ChangeSize(double x, double y)
         {
             throw new NotImplementedException();
         }
