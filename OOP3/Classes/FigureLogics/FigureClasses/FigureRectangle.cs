@@ -5,24 +5,24 @@ using System.Text;
 
 namespace OOP3
 {
-    class FigureRectangle : FigureAbstract
+    class FigureRectangle : FigureAbstract, IFigure
     {
         public FigureRectangle(PictureClass pic) : base(pic)
         {
             _points = 4;
         }
 
-        public override void Draw()
+        public void Draw()
         {
             throw new NotImplementedException();
         }
 
-        public override void MoveObj(double dx, double dy)
+        public void MoveObj(double dx, double dy)
         {
             throw new NotImplementedException();
         }
 
-        public override void SelectionDraw(double x, double y)
+        public void SelectionDraw(double x, double y)
         {
             throw new NotImplementedException();
         }

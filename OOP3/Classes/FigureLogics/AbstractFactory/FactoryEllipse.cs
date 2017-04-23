@@ -8,6 +8,7 @@ namespace OOP3
     class FactoryEllipse : IFactoryAbstract
     {
         private Prototype _figurePrototype;
+        private PictureClass _picController;
 
         public FactoryEllipse()
         {
@@ -15,7 +16,7 @@ namespace OOP3
         }
         public FigureAbstract CreateFigure()
         {
-            throw new NotImplementedException();
+            return new FigureEllipse(_picController);
         }
     }
 }
