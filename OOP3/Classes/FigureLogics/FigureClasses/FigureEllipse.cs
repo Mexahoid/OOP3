@@ -5,24 +5,24 @@ using System.Text;
 
 namespace OOP3
 {
-    class FigureEllipse : FigureAbstract, IFigure
+    class FigureEllipse : FigureAbstract
     {
         public FigureEllipse(PictureClass pic) : base(pic)
         {
             _points = 30;
         }
 
-        public void Draw()
+        public override void Draw()
         {
             throw new NotImplementedException();
         }
 
-        public void MoveObj(double dx, double dy)
+        public override void MoveObj(double dx, double dy)
         {
             throw new NotImplementedException();
         }
 
-        public void SelectionDraw(double x, double y)
+        public override void SelectionDraw(double x, double y)
         {
             throw new NotImplementedException();
         }

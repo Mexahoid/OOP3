@@ -6,31 +6,31 @@ using System.Text;
 
 namespace OOP3
 {
-    class FigureLine : FigureAbstract, IFigure
+    class FigureLine : FigureAbstract
     {
         public FigureLine(PictureClass pic) : base(pic)
         {
             _points = 2;
         }
 
-        public void Draw()
+        public override void Draw()
         {
+            throw new NotImplementedException();
+        }
 
+        public override void MoveObj(double dx, double dy)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SelectionDraw(double x, double y)
+        {
+            throw new NotImplementedException();
         }
 
         private void Drawer(List<int> X, List<int> Y, Graphics g)
         {
             g.DrawLine(Pens.Black, X[0], Y[0], X[1], Y[1]);
-        }
-
-        public void MoveObj(double dx, double dy)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SelectionDraw(double x, double y)
-        {
-            throw new NotImplementedException();
         }
     }
 }

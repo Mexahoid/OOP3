@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOP3
 {
-    abstract class FigureAbstract
+    abstract class FigureAbstract : IFigure
     {
         protected List<double> _x, _y;
         protected double[,] _corners;
@@ -13,6 +13,10 @@ namespace OOP3
         protected PictureClass _picController;
         protected bool _selected;
         protected int _points;
+
+
+
+        public bool Selected { get { return _selected; } set { _selected = value; } }
 
         protected FigureAbstract(PictureClass PictureController)
         {
@@ -75,6 +79,24 @@ namespace OOP3
             _corners[0, 3] = xMin;
             _corners[1, 3] = yMin;
 
+        }
+
+        public abstract void SelectionDraw(double x, double y);
+
+        public abstract void MoveObj(double dx, double dy);
+
+        public abstract void Draw();
+
+        /// <summary>
+        /// Метод для проверки нахождения фигуры в регионе.
+        /// </summary>
+        /// <param name="luX">Х верхнего левого угла.</param>
+        /// <param name="luY">Y верхнего левого угла.</param>
+        /// <param name="rdX">X нижнего правого угла.</param>
+        /// <param name="rdY">Y нижнего правого угла</param>
+        public virtual void IsInSelectionArea(double luX, double luY, double rdX, double rdY)
+        {
+            _selected = _corners[1, 0] < rdY || _corners[1, 2] > luY || _corners[0, 2] < luX || _corners[0, 0] > rdX;
         }
     }
 }
