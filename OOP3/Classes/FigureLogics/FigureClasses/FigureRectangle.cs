@@ -9,7 +9,7 @@ namespace OOP3
     {
         public FigureRectangle(PictureClass pic) : base(pic)
         {
-            _points = 4;
+
         }
         
         public override void Draw()
@@ -20,16 +20,6 @@ namespace OOP3
         public override void MoveObj(double dx, double dy)
         {
             throw new NotImplementedException();
-        }
-        
-        public override void ChangeSize(double x, double y)
-        {
-            base.ChangeSize(x, y);
-            _x[1] = x;
-            _x[2] = x;
-
-            _y[2] = y;
-            _y[3] = y;
         }
     }
 }

@@ -26,6 +26,8 @@ namespace OOP3
 
         FigureAbstract Clone();
 
-        void SelectPoint(double x, double y);
+        bool SelectPoint(double x, double y);
+
+        void SelectFigure(double x, double y);
     }
 }

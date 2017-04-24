@@ -7,13 +7,33 @@ namespace OOP3
 {
     abstract class FigureAbstract : IFigure
     {
-        protected List<double> _x, _y;
+        #region Инфо
+
+        /*
+        Правый нижний угол
+        _corners[0, 2]
+        _corners[1, 2]
+
+        Правый верхний угол
+        _corners[0, 1]
+        _corners[1, 1]
+
+        Левый нижний угол
+        _corners[0, 3]
+        _corners[1, 3]
+
+        Левый верхний угол
+        _corners[0, 0]
+        _corners[1, 0]
+        */
+
+        #endregion
+            
         protected double[,] _corners;
         protected double _xCent, _yCent;
 
         protected PictureClass _picController;
         protected bool _selected;
-        protected int _points;
 
         protected int _selectedPoint;
 
@@ -24,8 +44,6 @@ namespace OOP3
             _corners = new double[2, 4];
             _selected = false;
             _picController = PictureController;
-            _x = new List<double>();
-            _y = new List<double>();
         }
 
         public bool CursorIn(double X, double Y)
@@ -35,49 +53,9 @@ namespace OOP3
                     (_corners[1, 0] - Eps <= Y) && (Y <= _corners[1, 2] + Eps);
         }
 
-        public Tuple<List<double>, List<double>> GetPoints()
+        public double[,] GetPoints()
         {
-            return Tuple.Create(_x, _y);
-        }
-
-        protected void ResetPoints()
-        {
-            double xMax = double.MinValue;
-            double yMax = double.MinValue;
-            double xMin = double.MaxValue;
-            double yMin = double.MaxValue;
-            for (int i = 0; i < _points; i++)
-            {
-                if (_x[i] > xMax)
-                {
-                    xMax = _x[i];
-                }
-                if (_x[i] < xMin)
-                {
-                    xMin = _x[i];
-                }
-                if (_y[i] > yMax)
-                {
-                    yMax = _y[i];
-                }
-                if (_y[i] < yMin)
-                {
-                    yMin = _y[i];
-                }
-            }
-
-            _corners[0, 0] = xMin;
-            _corners[1, 0] = yMax;
-
-            _corners[0, 1] = xMax;
-            _corners[1, 1] = yMax;
-
-            _corners[0, 2] = xMax;
-            _corners[1, 2] = yMin;
-
-            _corners[0, 3] = xMin;
-            _corners[1, 3] = yMin;
-
+            return _corners;
         }
 
         /// <summary>
@@ -85,45 +63,39 @@ namespace OOP3
         /// </summary>
         /// <param name="x">Х утягиваемого угла.</param>
         /// <param name="y">Y утягиваемого угла.</param>
-        public virtual void ChangeSize(double x, double y)
+        public void ChangeSize(double x, double y)
         {
-            /*
-            Правый нижний угол
-            _corners[0, 2]
-            _corners[1, 2]
-
-            Правый верхний угол
-            _corners[0, 1]
-            _corners[1, 1]
-
-            Левый нижний угол
-            _corners[0, 3]
-            _corners[1, 3]
-
-            Левый верхний угол
-            _corners[0, 2]
-            _corners[1, 2]
-            */
-
-            //Если увеличиваем размер вправо...
-            if (x > _xCent)
+            switch (_selectedPoint)
             {
-                //..и увеличиваем Y (тянем вправо вверх)
-                if (y > _yCent)
-                {
+                //Взяли верхний левый угол
+                //Не изменяется нижний правый
+                case 0:
+                    //Изменяем:
+
+                    //Левый верхний на x, y
+                    _corners[0, 0] = x;
+                    _corners[1, 0] = y;
+                    //Правый верхний на y
+                    _corners[1, 1] = y;
+                    //Левый нижний на х
+                    _corners[0, 3] = x;
+                    break;
+                //Взяли верхний правый угол
+                //Не изменяется нижний левый
+                case 1:
                     //Изменяем:
 
                     //Правый верхний на x, y
                     _corners[0, 1] = x;
                     _corners[1, 1] = y;
                     //Левый верхний на y
-                    _corners[1, 2] = y;
+                    _corners[1, 0] = y;
                     //Правый нижний на х
                     _corners[0, 2] = x;
-                }
-                //..и уменьшаем Y (тянем вправо вниз)
-                else
-                {
+                    break;
+                //Взяли нижний правый угол
+                //Не изменяется верхний левый
+                case 2:
                     //Изменяем:
 
                     //Правый нижний на x, y
@@ -133,27 +105,10 @@ namespace OOP3
                     _corners[1, 3] = y;
                     //Правый верхний на х
                     _corners[0, 1] = x;
-                }
-            }
-            //Если увеличиваем размер влево...
-            else
-            {
-                //..и увеличиваем Y (тянем влево вверх)
-                if (y > _yCent)
-                {
-                    //Изменяем:
-
-                    //Левый верхний на x, y
-                    _corners[0, 2] = x;
-                    _corners[1, 2] = y;
-                    //Правый верхний на y
-                    _corners[1, 1] = y;
-                    //Левый нижний на х
-                    _corners[0, 3] = x;
-                }
-                //..и уменьшаем Y (тянем влево вниз)
-                else
-                {
+                    break;
+                //Взяли нижний левый угол
+                //Не изменяется верхний правый
+                case 3:
                     // Изменяем:
 
                     //Левый нижний на x, y
@@ -162,10 +117,10 @@ namespace OOP3
                     //Правый нижний на y
                     _corners[1, 2] = y;
                     //Левый верхний на х
-                    _corners[0, 2] = x;
-                }
+                    _corners[0, 0] = x;
+                    break;
             }
-
+            
             _xCent = (_corners[0, 1] + _corners[0, 2] + _corners[0, 3] + _corners[0, 0]) / 4;
             _yCent = (_corners[1, 1] + _corners[1, 2] + _corners[1, 3] + _corners[1, 0]) / 4;
         }
@@ -195,27 +150,29 @@ namespace OOP3
         {
             _corners[0, 0] = _corners[0, 1] = _corners[0, 2] = _corners[0, 3] = x;
             _corners[1, 0] = _corners[1, 1] = _corners[1, 2] = _corners[1, 3] = y;
-            for (int i = 0; i < _points; i++)
-            {
-                _x.Add(x);
-                _y.Add(y);
-            }
 
             _xCent = x;
             _yCent = y;
+            _selectedPoint = 2;
         }
 
-        public virtual void SelectPoint(double x, double y)
+        public bool SelectPoint(double x, double y)
         {
             double e = 2.0;
-            for (int i = 0; i < _points; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (Math.Sqrt((x - _x[i]) * (x - _x[i]) + (y - _y[i]) * (y - _y[i])) <= e)
+                if (Math.Sqrt((x - _corners[0, i]) * (x - _corners[0, i]) + (y - _corners[1, i]) * (y - _corners[1, i])) <= e)
                 {
                     _selectedPoint = i;
-                    break;
+                    return true;
                 }
             }
+            return false;
+        }
+
+        public void SelectFigure(double x, double y)
+        {
+            _selected = _corners[1, 3] <= y && _corners[1, 1] >= y && _corners[0, 3] >= x && _corners[0, 1] <= x;
         }
     }
 }

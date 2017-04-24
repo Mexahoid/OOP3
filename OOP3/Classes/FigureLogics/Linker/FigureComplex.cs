@@ -12,44 +12,63 @@ namespace OOP3
 
         public FigureComplex(List<FigureAbstract> Figures, PictureClass pic) : base(pic) 
         {
-            int C = Figures.Count;
             _figures = Figures;
-            _points = 0;
-            for (int i = 0; i < C; i++)
-            {
-                _FigureAdd(Figures[i]);
-            }
-            ResetPoints();
-        }
-
-        private void _FigureAdd(FigureAbstract Figure)
-        {
-            Tuple<List<double>, List<double>> Temp;
-            Temp = Figure.GetPoints();
-            int T = Temp.Item1.Count;
-            for (int j = 0; j < T; j++)
-            {
-                _x.Add(Temp.Item1[j]);
-                _y.Add(Temp.Item2[j]);
-            }
-            _points += T;
         }
 
         public void ComposeIn(FigureAbstract Figure)
         {
             _figures.Add(Figure);
-            _FigureAdd(Figure);
-            ResetPoints();
+            _ResetPoints();
+        }
+
+        private void _ResetPoints()
+        {
+            double xMax = double.MinValue;
+            double yMax = double.MinValue;
+            double xMin = double.MaxValue;
+            double yMin = double.MaxValue;
+            int C = _figures.Count;
+            double[,] Temp;
+            for (int j = 0; j < C; j++)
+            {
+                Temp = _figures[j].GetPoints();
+                for (int i = 0; i < 4; i++)
+                {
+                    if (Temp[0, i] > xMax)
+                    {
+                        xMax = Temp[0, i];
+                    }
+                    if (Temp[0, i] < xMin)
+                    {
+                        xMin = Temp[0, i];
+                    }
+                    if (Temp[1, i] > yMax)
+                    {
+                        yMax = Temp[1, i];
+                    }
+                    if (Temp[1, i] < yMin)
+                    {
+                        yMin = Temp[1, i];
+                    }
+                }
+            }
+
+            _corners[0, 0] = xMin;
+            _corners[1, 0] = yMax;
+
+            _corners[0, 1] = xMax;
+            _corners[1, 1] = yMax;
+
+            _corners[0, 2] = xMax;
+            _corners[1, 2] = yMin;
+
+            _corners[0, 3] = xMin;
+            _corners[1, 3] = yMin;
         }
 
         public List<FigureAbstract> Decompose()
         {
             return _figures;
-        }
-
-        public override void ChangeSize(double x, double y)
-        {
-            throw new NotImplementedException();
         }
 
         public override void MoveObj(double dx, double dy)

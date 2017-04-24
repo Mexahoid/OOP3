@@ -10,7 +10,7 @@ namespace OOP3
     {
         public FigureLine(PictureClass pic) : base(pic)
         {
-            _points = 2;
+
         }
 
         public override void Draw()
@@ -19,11 +19,6 @@ namespace OOP3
         }
 
         public override void MoveObj(double dx, double dy)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void ChangeSize(double x, double y)
         {
             throw new NotImplementedException();
         }
