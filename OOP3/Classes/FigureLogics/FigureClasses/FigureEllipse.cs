@@ -24,7 +24,35 @@ namespace OOP3
 
         public override void ChangeSize(double x, double y)
         {
-            throw new NotImplementedException();
+            if(x > _xCent)
+            {
+                if (y > _yCent)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                if (y > _yCent)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+
+            /*for (int i = 0; i <= Lp - 1; i++)
+            {
+                obj[L - 1].points[i].x = x_0 + Ea * Math.Cos(2 * i * Math.PI / Lp);
+                obj[L - 1].points[i].y = y_0 + Eb * Math.Sin(2 * i * Math.PI / Lp);
+            }*/
+            ResetPoints();
         }
     }
 }

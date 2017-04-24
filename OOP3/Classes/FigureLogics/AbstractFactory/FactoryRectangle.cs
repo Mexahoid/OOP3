@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOP3
 {
-    class FactoryRectangle : IFactoryAbstract
+    class FactoryRectangle : IFactory
     {
         private readonly FigureRectangle _protoRect;
 

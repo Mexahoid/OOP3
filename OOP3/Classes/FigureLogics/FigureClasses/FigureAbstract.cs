@@ -9,6 +9,7 @@ namespace OOP3
     {
         protected List<double> _x, _y;
         protected double[,] _corners;
+        protected double _xCent, _yCent;
 
         protected PictureClass _picController;
         protected bool _selected;
@@ -79,18 +80,94 @@ namespace OOP3
 
         }
 
+        /// <summary>
+        /// Выставляет новые границы области фигуры.
+        /// </summary>
+        /// <param name="x">Х утягиваемого угла.</param>
+        /// <param name="y">Y утягиваемого угла.</param>
         public virtual void ChangeSize(double x, double y)
         {
-            //Правый нижний угол
-            _corners[0, 2] = x;
-            _corners[1, 2] = y;
+            /*
+            Правый нижний угол
+            _corners[0, 2]
+            _corners[1, 2]
 
-            //Левый нижний угол
-            _corners[1, 3] = y;
+            Правый верхний угол
+            _corners[0, 1]
+            _corners[1, 1]
 
-            //Правый верхний угол
-            _corners[0, 1] = x;
+            Левый нижний угол
+            _corners[0, 3]
+            _corners[1, 3]
 
+            Левый верхний угол
+            _corners[0, 2]
+            _corners[1, 2]
+            */
+
+            //Если увеличиваем размер вправо...
+            if (x > _xCent)
+            {
+                //..и увеличиваем Y (тянем вправо вверх)
+                if (y > _yCent)
+                {
+                    //Изменяем:
+
+                    //Правый верхний на x, y
+                    _corners[0, 1] = x;
+                    _corners[1, 1] = y;
+                    //Левый верхний на y
+                    _corners[1, 2] = y;
+                    //Правый нижний на х
+                    _corners[0, 2] = x;
+                }
+                //..и уменьшаем Y (тянем вправо вниз)
+                else
+                {
+                    //Изменяем:
+
+                    //Правый нижний на x, y
+                    _corners[0, 2] = x;
+                    _corners[1, 2] = y;
+                    //Левый нижний на y
+                    _corners[1, 3] = y;
+                    //Правый верхний на х
+                    _corners[0, 1] = x;
+                }
+            }
+            //Если увеличиваем размер влево...
+            else
+            {
+                //..и увеличиваем Y (тянем влево вверх)
+                if (y > _yCent)
+                {
+                    //Изменяем:
+
+                    //Левый верхний на x, y
+                    _corners[0, 2] = x;
+                    _corners[1, 2] = y;
+                    //Правый верхний на y
+                    _corners[1, 1] = y;
+                    //Левый нижний на х
+                    _corners[0, 3] = x;
+                }
+                //..и уменьшаем Y (тянем влево вниз)
+                else
+                {
+                    // Изменяем:
+
+                    //Левый нижний на x, y
+                    _corners[0, 3] = x;
+                    _corners[1, 3] = y;
+                    //Правый нижний на y
+                    _corners[1, 2] = y;
+                    //Левый верхний на х
+                    _corners[0, 2] = x;
+                }
+            }
+
+            _xCent = (_corners[0, 1] + _corners[0, 2] + _corners[0, 3] + _corners[0, 0]) / 4;
+            _yCent = (_corners[1, 1] + _corners[1, 2] + _corners[1, 3] + _corners[1, 0]) / 4;
         }
 
         public abstract void MoveObj(double dx, double dy);
@@ -114,10 +191,18 @@ namespace OOP3
             return (FigureAbstract)MemberwiseClone();
         }
 
-        public virtual void PlaceFigure(double x, double y)
+        public void PlaceFigure(double x, double y)
         {
             _corners[0, 0] = _corners[0, 1] = _corners[0, 2] = _corners[0, 3] = x;
             _corners[1, 0] = _corners[1, 1] = _corners[1, 2] = _corners[1, 3] = y;
+            for (int i = 0; i < _points; i++)
+            {
+                _x.Add(x);
+                _y.Add(y);
+            }
+
+            _xCent = x;
+            _yCent = y;
         }
 
         public virtual void SelectPoint(double x, double y)
@@ -125,7 +210,7 @@ namespace OOP3
             double e = 2.0;
             for (int i = 0; i < _points; i++)
             {
-                if(Math.Sqrt((x - _x[i]) * (x - _x[i]) + (y - _y[i]) * (y - _y[i])) <= e)
+                if (Math.Sqrt((x - _x[i]) * (x - _x[i]) + (y - _y[i]) * (y - _y[i])) <= e)
                 {
                     _selectedPoint = i;
                     break;

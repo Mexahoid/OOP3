@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\FigureLogics\AbstractFactory\IFactoryAbstract.cs" />
+    <Compile Include="Classes\FigureLogics\AbstractFactory\IFactory.cs" />
     <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryLine.cs" />
     <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryEllipse.cs" />
     <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryRectangle.cs" />

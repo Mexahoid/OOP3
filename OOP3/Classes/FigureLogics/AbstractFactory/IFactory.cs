@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOP3
 {
-    interface IFactoryAbstract
+    interface IFactory
     {
         FigureAbstract CreateFigure();
     }

@@ -69,8 +69,8 @@ namespace OOP3
             this.CtrlTSMIUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMIRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMIHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.CtrlPanelMain = new System.Windows.Forms.Panel();
             this.CtrlTSMILoadFigures = new System.Windows.Forms.ToolStripMenuItem();
+            this.CtrlPanelMain = new System.Windows.Forms.Panel();
             this.CtrlTSMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,6 +166,13 @@ namespace OOP3
             this.CtrlTSMIHelp.Text = "Помощь";
             this.CtrlTSMIHelp.Click += new System.EventHandler(this.CtrlTSMIHelp_Click);
             // 
+            // CtrlTSMILoadFigures
+            // 
+            this.CtrlTSMILoadFigures.Name = "CtrlTSMILoadFigures";
+            this.CtrlTSMILoadFigures.Size = new System.Drawing.Size(119, 20);
+            this.CtrlTSMILoadFigures.Text = "Загрузить фигуры";
+            this.CtrlTSMILoadFigures.Click += new System.EventHandler(this.CtrlTSMILoadFigures_Click);
+            // 
             // CtrlPanelMain
             // 
             this.CtrlPanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -174,15 +181,8 @@ namespace OOP3
             this.CtrlPanelMain.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CtrlPanelMain.Location = new System.Drawing.Point(129, 27);
             this.CtrlPanelMain.Name = "CtrlPanelMain";
-            this.CtrlPanelMain.Size = new System.Drawing.Size(523, 482);
+            this.CtrlPanelMain.Size = new System.Drawing.Size(523, 581);
             this.CtrlPanelMain.TabIndex = 2;
-            // 
-            // CtrlTSMILoadFigures
-            // 
-            this.CtrlTSMILoadFigures.Name = "CtrlTSMILoadFigures";
-            this.CtrlTSMILoadFigures.Size = new System.Drawing.Size(119, 20);
-            this.CtrlTSMILoadFigures.Text = "Загрузить фигуры";
-            this.CtrlTSMILoadFigures.Click += new System.EventHandler(this.CtrlTSMILoadFigures_Click);
             // 
             // MainForm
             // 

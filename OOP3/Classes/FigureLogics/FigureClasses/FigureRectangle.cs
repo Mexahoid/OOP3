@@ -31,12 +31,5 @@ namespace OOP3
             _y[2] = y;
             _y[3] = y;
         }
-
-        public override void PlaceFigure(double x, double y)
-        {
-            base.PlaceFigure(x, y);
-            _x.AddRange(new double[] { x, x, x, x });
-            _y.AddRange(new double[] { y, y, y, y });
-        }
     }
 }

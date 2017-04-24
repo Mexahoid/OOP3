@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOP3
 {
-    class FactoryLine : IFactoryAbstract
+    class FactoryLine : IFactory
     {
         private readonly FigureLine _protoLine;
 

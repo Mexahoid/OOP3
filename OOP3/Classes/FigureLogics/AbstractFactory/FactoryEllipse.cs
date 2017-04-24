@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOP3
 {
-    class FactoryEllipse : IFactoryAbstract
+    class FactoryEllipse : IFactory
     {
         private readonly FigureEllipse _protoEll;
 

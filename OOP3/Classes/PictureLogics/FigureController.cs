@@ -10,13 +10,13 @@ namespace OOP3
     class FigureController
     {
         private PictureClass _picture;
-        private List<IFactoryAbstract> _factories;
+        private List<IFactory> _factories;
         private List<FigureAbstract> _figures;
 
 
         public FigureController(Panel Canvas)
         {
-            _factories = new List<IFactoryAbstract>();
+            _factories = new List<IFactory>();
             _figures = new List<FigureAbstract>();
             _picture = new PictureClass(Canvas);
             _factories.Add(new FactoryEllipse(_picture));
