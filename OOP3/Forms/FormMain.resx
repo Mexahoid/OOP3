@@ -120,4 +120,36 @@
   <metadata name="CtrlTSMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="CtrlButSel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAIAAADZrBkAAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAHVJREFUOE/NjsEOABEMRH26T3Z3sINmdFuLOO3kRdrqC6HkdME/tdAyWlZfiFDK
+        qUbBOPVKN0QLPSstxugFxDjA9c5B9howpneAHfV/itGy1+jgZKEXyJhqB3W9a+GCRqbe4Zy1RrSps+D1
+        2qED5l/fcqXl9ABXJELrpFS/RQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="CtrlButRect.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAADVJREFUOE9j+P/7A0kIqoGBCICu4T9eAFWArgHMxopGNSDzcaGhoYEgQNEAQsQA
+        FA3EoN8fAB8pZ1cyZE0dAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="CtrlButEll.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAIAAABGNLJTAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAFpJREFUKFO9j8EOABAMQ/3/17o7EDZ0G2IHmiZmfU0IOcV7f6ODEaYV4IMyI94j
+        Pbm+FW4dmlt1x4Gp4KHpYc/oMWGmPAD47Kqj9kzzxUj1BV2tJFNDH+2hUyyQBGAtaB8j4wAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
+  <data name="CtrlButLine.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAIAAAD9MqGbAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAHBJREFUOE+1jVEKACEIRLv/afvvY3cWQdQcpWCHR5j6ajxr3pGYwySMLHH2bZsU
+        cmMiTHZd0XBKjk2NXHszaBKmgX/MQgPODPKZKWk1kJuI9hnkT7PBSEzt1ESTXXfcqha2lmLHDaxTNwF9
+        suXWXPMFEOWBseLVOeMAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

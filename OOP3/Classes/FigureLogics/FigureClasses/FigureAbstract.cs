@@ -51,7 +51,7 @@ namespace OOP3
         {
             double Eps = 2.0;
             return (_corners[0, 0] - Eps <= X) && (X <= _corners[0, 2] + Eps) &&
-                    (_corners[1, 0] - Eps <= Y) && (Y <= _corners[1, 2] + Eps);
+                    (_corners[1, 2] - Eps <= Y) && (Y <= _corners[1, 0] + Eps);
         }
 
         public double[,] GetPoints()
@@ -66,11 +66,25 @@ namespace OOP3
         /// <param name="y">Y утягиваемого угла.</param>
         public void ChangeSize(double x, double y)
         {
+            double eps = 2.0;
             switch (_selectedPoint)
             {
                 //Взяли верхний левый угол
                 //Не изменяется нижний правый
                 case 0:
+                    if (y <= _corners[1, 2] + eps && x >= _corners[0, 2] + eps)
+                        _selectedPoint = 2;
+                    else
+                    {
+                        if (y <= _corners[1, 2])
+                        {
+                            _selectedPoint = 3;
+                        }
+                        if (x >= _corners[0, 2])
+                        {
+                            _selectedPoint = 1;
+                        }
+                    }
                     //Изменяем:
 
                     //Левый верхний на x, y
@@ -84,6 +98,19 @@ namespace OOP3
                 //Взяли верхний правый угол
                 //Не изменяется нижний левый
                 case 1:
+                    if (y <= _corners[1, 3] && x <= _corners[0, 3])
+                        _selectedPoint = 3;
+                    else
+                    {
+                        if (y <= _corners[1, 3])
+                        {
+                            _selectedPoint = 2;
+                        }
+                        if (x <= _corners[0, 3])
+                        {
+                            _selectedPoint = 0;
+                        }
+                    }
                     //Изменяем:
 
                     //Правый верхний на x, y
@@ -97,6 +124,19 @@ namespace OOP3
                 //Взяли нижний правый угол
                 //Не изменяется верхний левый
                 case 2:
+                    if (y >= _corners[1, 0] && x <= _corners[0, 0])
+                        _selectedPoint = 0;
+                    else
+                    {
+                        if (y >= _corners[1, 0])
+                        {
+                            _selectedPoint = 1;
+                        }
+                        if (x <= _corners[0, 0])
+                        {
+                            _selectedPoint = 3;
+                        }
+                    }
                     //Изменяем:
 
                     //Правый нижний на x, y
@@ -110,6 +150,19 @@ namespace OOP3
                 //Взяли нижний левый угол
                 //Не изменяется верхний правый
                 case 3:
+                    if (y >= _corners[1, 1] && x >= _corners[0, 1])
+                        _selectedPoint = 1;
+                    else
+                    {
+                        if (y >= _corners[1, 1])
+                        {
+                            _selectedPoint = 0;
+                        }
+                        if (x >= _corners[0, 1])
+                        {
+                            _selectedPoint = 2;
+                        }
+                    }
                     // Изменяем:
 
                     //Левый нижний на x, y
@@ -125,30 +178,34 @@ namespace OOP3
             _xCent = (_corners[0, 1] + _corners[0, 2] + _corners[0, 3] + _corners[0, 0]) / 4;
             _yCent = (_corners[1, 1] + _corners[1, 2] + _corners[1, 3] + _corners[1, 0]) / 4;
 
+        }
+
+        public void ResetCorners()
+        {
 
             double xMin = double.MaxValue;
-            double xMax = double.MinValue;
             double yMin = double.MaxValue;
+            double xMax = double.MinValue;
             double yMax = double.MinValue;
             for (int i = 0; i < 4; i++)
             {
-                if (_corners[0, i] > xMin)
-                {
-                    xMin = _corners[0, i];
-                }
-
-                if (_corners[0, i] < xMax)
+                if (_corners[0, i] > xMax)
                 {
                     xMax = _corners[0, i];
                 }
-                if (_corners[1, i] > yMin)
-                {
-                    yMin = _corners[1, i];
-                }
 
-                if (_corners[1, i] < yMax)
+                if (_corners[0, i] < xMin)
+                {
+                    xMin = _corners[0, i];
+                }
+                if (_corners[1, i] > yMax)
                 {
                     yMax = _corners[1, i];
+                }
+
+                if (_corners[1, i] < yMin)
+                {
+                    yMin = _corners[1, i];
                 }
             }
             //Переназначить индексы углов

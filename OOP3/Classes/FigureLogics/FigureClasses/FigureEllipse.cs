@@ -15,12 +15,16 @@ namespace OOP3
 
         public override void Draw()
         {
-            throw new NotImplementedException();
+            _picController.DrawFigure(_Drawer, _corners);
         }
 
         protected override void _Drawer(int[,] Corners, Graphics g)
         {
-            g.DrawEllipse(Pens.Black, Corners[0, 0], Corners[1, 0], Math.Abs(Corners[0, 2] - Corners[0,0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
+            if (_selected)
+                g.DrawRectangle(Pens.LightGray, Corners[0, 0], Corners[1, 0] - 0, 
+                    Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
+            g.DrawEllipse(Pens.Black, Corners[0, 0], Corners[1, 0] - 0,
+                Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
         }
     }
 }

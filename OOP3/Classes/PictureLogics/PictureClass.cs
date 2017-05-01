@@ -40,7 +40,7 @@ namespace OOP3
             for (int i = 0; i < 4; i++)
             {
                 corners[0, i] = II(Corners[0, i]);
-                corners[1, i] = JJ(Corners[1, i]);
+                corners[1, 3 - i] = JJ(Corners[1, i]);
             }
             Del(corners, _canvas);
         }
@@ -55,11 +55,11 @@ namespace OOP3
         }
         private double XX(int I)
         {
-            return xMin + (1D * I - I1) * (xMax - xMin) / (I2 - I1);
+            return xMin + (I - I1) * (xMax - xMin) / (I2 - I1);
         }
         private double YY(int J)
         {
-            return yMin + (1D * J - J1) * (yMax - yMin) / (J2 - J1);
+            return yMin + (J - J1) * (yMax - yMin) / (J2 - J1);
         }
 
         public Tuple<double, double> GetPoint(int X, int Y)
