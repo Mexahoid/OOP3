@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace OOP3
 {
-    public delegate void DrawerDelegate(List<int> X, List<int> Y, Graphics g);
+    public delegate void DrawerDelegate(int[,] Corners, Graphics g);
 
     class PictureClass
     {
@@ -34,16 +34,15 @@ namespace OOP3
             _canvas.Clear(Color.White);
         }
 
-        public void DrawFigure(DrawerDelegate Del, List<double> X, List<double> Y)
+        public void DrawFigure(DrawerDelegate Del, double[,] Corners)
         {
-            int C = X.Count;
-            List<int> XI = new List<int>(), YI = new List<int>();
-            for (int i = 0; i < C; i++)
+            int[,] corners = new int[2, 4];
+            for (int i = 0; i < 4; i++)
             {
-                XI[i] = II(X[i]);
-                YI[i] = JJ(Y[i]);
+                corners[0, i] = II(Corners[0, i]);
+                corners[1, i] = JJ(Corners[1, i]);
             }
-            Del(XI, YI, _canvas);
+            Del(corners, _canvas);
         }
 
         private int II(double x)

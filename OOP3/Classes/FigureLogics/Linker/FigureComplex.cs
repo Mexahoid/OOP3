@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
 namespace OOP3
 {
-    class FigureComplex : FigureAbstract, IFigure, IEnumerable<FigureAbstract>
+    class FigureComplex : FigureAbstract, IEnumerable<FigureAbstract>
     {
         private List<FigureAbstract> _figures;
 
@@ -73,12 +74,21 @@ namespace OOP3
 
         public override void MoveObj(double dx, double dy)
         {
-            throw new NotImplementedException();
+            base.MoveObj(dx, dy);
+            int C = _figures.Count;
+            for (int i = 0; i < C; i++)
+            {
+                _figures[i].MoveObj(dx, dy);
+            }
         }
 
         public override void Draw()
         {
-            throw new NotImplementedException();
+            int C = _figures.Count;
+            for (int i = 0; i < C; i++)
+            {
+                _figures[i].Draw();
+            }
         }
 
         public override void IsInSelectionArea(double luX, double luY, double rdX, double rdY)
@@ -103,6 +113,11 @@ namespace OOP3
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<FigureAbstract>)this).GetEnumerator();
+        }
+
+        protected override void _Drawer(int[,] Corners, Graphics g)
+        {
+            throw new NotImplementedException();
         }
     }
 }

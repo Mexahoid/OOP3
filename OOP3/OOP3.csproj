@@ -53,10 +53,6 @@
     <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryRectangle.cs" />
     <Compile Include="Classes\FigureLogics\FigureClasses\FigureAbstract.cs" />
     <Compile Include="Classes\FigureLogics\Linker\FigureComplex.cs" />
-    <Compile Include="Classes\FigureLogics\Prototype\PrototypeEllipse.cs" />
-    <Compile Include="Classes\FigureLogics\Prototype\PrototypeLine.cs" />
-    <Compile Include="Classes\FigureLogics\Prototype\Prototype.cs" />
-    <Compile Include="Classes\FigureLogics\Prototype\PrototypeRectangle.cs" />
     <Compile Include="Classes\PictureLogics\FigureController.cs" />
     <Compile Include="Classes\FigureLogics\FigureClasses\FigureRectangle.cs" />
     <Compile Include="Classes\FigureLogics\FigureClasses\FigureEllipse.cs" />

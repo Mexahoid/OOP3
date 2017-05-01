@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace OOP3
 {
@@ -28,7 +29,7 @@ namespace OOP3
         */
 
         #endregion
-            
+
         protected double[,] _corners;
         protected double _xCent, _yCent;
 
@@ -120,12 +121,55 @@ namespace OOP3
                     _corners[0, 0] = x;
                     break;
             }
-            
+
             _xCent = (_corners[0, 1] + _corners[0, 2] + _corners[0, 3] + _corners[0, 0]) / 4;
             _yCent = (_corners[1, 1] + _corners[1, 2] + _corners[1, 3] + _corners[1, 0]) / 4;
+
+
+            double xMin = double.MaxValue;
+            double xMax = double.MinValue;
+            double yMin = double.MaxValue;
+            double yMax = double.MinValue;
+            for (int i = 0; i < 4; i++)
+            {
+                if (_corners[0, i] > xMin)
+                {
+                    xMin = _corners[0, i];
+                }
+
+                if (_corners[0, i] < xMax)
+                {
+                    xMax = _corners[0, i];
+                }
+                if (_corners[1, i] > yMin)
+                {
+                    yMin = _corners[1, i];
+                }
+
+                if (_corners[1, i] < yMax)
+                {
+                    yMax = _corners[1, i];
+                }
+            }
+            //Переназначить индексы углов
+            _corners[0, 0] = xMin;
+            _corners[0, 1] = xMax;
+            _corners[0, 2] = xMax;
+            _corners[0, 3] = xMin;
+            _corners[1, 0] = yMax;
+            _corners[1, 1] = yMax;
+            _corners[1, 2] = yMin;
+            _corners[1, 3] = yMin;
         }
 
-        public abstract void MoveObj(double dx, double dy);
+        public virtual void MoveObj(double dx, double dy)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                _corners[0, i] += dx;
+                _corners[1, i] += dy;
+            }
+        }
 
         public abstract void Draw();
 
@@ -174,5 +218,7 @@ namespace OOP3
         {
             _selected = _corners[1, 3] <= y && _corners[1, 1] >= y && _corners[0, 3] >= x && _corners[0, 1] <= x;
         }
+
+        protected abstract void _Drawer(int[,] Corners, Graphics g);
     }
 }

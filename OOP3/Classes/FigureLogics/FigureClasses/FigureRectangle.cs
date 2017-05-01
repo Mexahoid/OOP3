@@ -16,10 +16,5 @@ namespace OOP3
         {
             throw new NotImplementedException();
         }
-        
-        public override void MoveObj(double dx, double dy)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

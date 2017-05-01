@@ -15,17 +15,12 @@ namespace OOP3
 
         public override void Draw()
         {
-            throw new NotImplementedException();
+            _picController.DrawFigure(_Drawer, _corners);
         }
 
-        public override void MoveObj(double dx, double dy)
+        protected override void _Drawer(int[,] Corners, Graphics g)
         {
-            throw new NotImplementedException();
-        }
-
-        private void Drawer(List<int> X, List<int> Y, Graphics g)
-        {
-            g.DrawLine(Pens.Black, X[0], Y[0], X[1], Y[1]);
+            g.DrawLine(Pens.Black, Corners[0, 0], Corners[1, 0], Corners[0, 2], Corners[1, 2]);
         }
     }
 }
