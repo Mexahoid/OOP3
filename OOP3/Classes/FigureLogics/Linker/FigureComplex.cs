@@ -11,14 +11,22 @@ namespace OOP3
     {
         private List<FigureAbstract> _figures;
 
-        public FigureComplex(List<FigureAbstract> Figures, PictureClass pic) : base(pic) 
+        public FigureComplex(PictureClass pic) : base(pic) { }
+
+        public override bool Selected {
+            get { return base.Selected; }
+            set {
+                int C = _figures.Count;
+                for (int i = 0; i < C; i++)
+                {
+                    _figures[i].Selected = value;
+                }
+                base.Selected = value;
+            } }
+
+        public void ComposeIn(List<FigureAbstract> Figures)
         {
             _figures = Figures;
-        }
-
-        public void ComposeIn(FigureAbstract Figure)
-        {
-            _figures.Add(Figure);
             _ResetPoints();
         }
 

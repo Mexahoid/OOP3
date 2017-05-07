@@ -58,7 +58,6 @@ namespace OOP3
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.CtrlTSMain = new System.Windows.Forms.MenuStrip();
             this.CtrlTSMIFile = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMINew = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,10 +72,11 @@ namespace OOP3
             this.CtrlTSMILoadFigures = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlPanelMain = new System.Windows.Forms.Panel();
             this.CtrlGrBTools = new System.Windows.Forms.GroupBox();
+            this.CtrlButSel = new System.Windows.Forms.Button();
             this.CtrlButRect = new System.Windows.Forms.Button();
             this.CtrlButEll = new System.Windows.Forms.Button();
             this.CtrlButLine = new System.Windows.Forms.Button();
-            this.CtrlButSel = new System.Windows.Forms.Button();
+            this.CtrlButArea = new System.Windows.Forms.Button();
             this.CtrlTSMain.SuspendLayout();
             this.CtrlGrBTools.SuspendLayout();
             this.SuspendLayout();
@@ -185,7 +185,7 @@ namespace OOP3
             this.CtrlPanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CtrlPanelMain.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CtrlPanelMain.BackColor = System.Drawing.Color.White;
             this.CtrlPanelMain.Location = new System.Drawing.Point(129, 27);
             this.CtrlPanelMain.Name = "CtrlPanelMain";
             this.CtrlPanelMain.Size = new System.Drawing.Size(523, 581);
@@ -196,6 +196,7 @@ namespace OOP3
             // 
             // CtrlGrBTools
             // 
+            this.CtrlGrBTools.Controls.Add(this.CtrlButArea);
             this.CtrlGrBTools.Controls.Add(this.CtrlButSel);
             this.CtrlGrBTools.Controls.Add(this.CtrlButRect);
             this.CtrlGrBTools.Controls.Add(this.CtrlButEll);
@@ -205,11 +206,28 @@ namespace OOP3
             this.CtrlGrBTools.Size = new System.Drawing.Size(111, 237);
             this.CtrlGrBTools.TabIndex = 0;
             this.CtrlGrBTools.TabStop = false;
-            this.CtrlGrBTools.Text = "groupBox1";
+            this.CtrlGrBTools.Text = "Инструменты";
+            // 
+            // CtrlButSel
+            // 
+            this.CtrlButSel.BackgroundImage = global::OOP3.Properties.Resources.Arrow;
+            this.CtrlButSel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButSel.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButSel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButSel.Location = new System.Drawing.Point(6, 50);
+            this.CtrlButSel.Name = "CtrlButSel";
+            this.CtrlButSel.Size = new System.Drawing.Size(26, 25);
+            this.CtrlButSel.TabIndex = 3;
+            this.CtrlButSel.Tag = "-1";
+            this.CtrlButSel.UseVisualStyleBackColor = true;
+            this.CtrlButSel.Click += new System.EventHandler(this.CtrlButTool_Click);
             // 
             // CtrlButRect
             // 
-            this.CtrlButRect.Image = ((System.Drawing.Image)(resources.GetObject("CtrlButRect.Image")));
+            this.CtrlButRect.BackgroundImage = global::OOP3.Properties.Resources.Rectangle;
+            this.CtrlButRect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButRect.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButRect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CtrlButRect.Location = new System.Drawing.Point(70, 19);
             this.CtrlButRect.Name = "CtrlButRect";
             this.CtrlButRect.Size = new System.Drawing.Size(26, 25);
@@ -220,7 +238,10 @@ namespace OOP3
             // 
             // CtrlButEll
             // 
-            this.CtrlButEll.Image = ((System.Drawing.Image)(resources.GetObject("CtrlButEll.Image")));
+            this.CtrlButEll.BackgroundImage = global::OOP3.Properties.Resources.Ellipse;
+            this.CtrlButEll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButEll.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButEll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CtrlButEll.Location = new System.Drawing.Point(6, 19);
             this.CtrlButEll.Name = "CtrlButEll";
             this.CtrlButEll.Size = new System.Drawing.Size(26, 25);
@@ -231,7 +252,10 @@ namespace OOP3
             // 
             // CtrlButLine
             // 
-            this.CtrlButLine.Image = ((System.Drawing.Image)(resources.GetObject("CtrlButLine.Image")));
+            this.CtrlButLine.BackgroundImage = global::OOP3.Properties.Resources.Line;
+            this.CtrlButLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButLine.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButLine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CtrlButLine.Location = new System.Drawing.Point(38, 19);
             this.CtrlButLine.Name = "CtrlButLine";
             this.CtrlButLine.Size = new System.Drawing.Size(26, 25);
@@ -240,21 +264,25 @@ namespace OOP3
             this.CtrlButLine.UseVisualStyleBackColor = true;
             this.CtrlButLine.Click += new System.EventHandler(this.CtrlButTool_Click);
             // 
-            // CtrlButSel
+            // CtrlButArea
             // 
-            this.CtrlButSel.Image = ((System.Drawing.Image)(resources.GetObject("CtrlButSel.Image")));
-            this.CtrlButSel.Location = new System.Drawing.Point(6, 50);
-            this.CtrlButSel.Name = "CtrlButSel";
-            this.CtrlButSel.Size = new System.Drawing.Size(26, 25);
-            this.CtrlButSel.TabIndex = 3;
-            this.CtrlButSel.Tag = "-1";
-            this.CtrlButSel.UseVisualStyleBackColor = true;
-            this.CtrlButSel.Click += new System.EventHandler(this.CtrlButTool_Click);
+            this.CtrlButArea.BackgroundImage = global::OOP3.Properties.Resources.Selection;
+            this.CtrlButArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButArea.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButArea.Location = new System.Drawing.Point(38, 50);
+            this.CtrlButArea.Name = "CtrlButArea";
+            this.CtrlButArea.Size = new System.Drawing.Size(26, 25);
+            this.CtrlButArea.TabIndex = 4;
+            this.CtrlButArea.Tag = "-2";
+            this.CtrlButArea.UseVisualStyleBackColor = true;
+            this.CtrlButArea.Click += new System.EventHandler(this.CtrlButTool_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(836, 620);
             this.Controls.Add(this.CtrlGrBTools);
             this.Controls.Add(this.CtrlPanelMain);
@@ -289,6 +317,7 @@ namespace OOP3
         private Button CtrlButEll;
         private Button CtrlButLine;
         private Button CtrlButSel;
+        private Button CtrlButArea;
     }
 }
 

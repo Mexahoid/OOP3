@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryComplex.cs" />
     <Compile Include="Classes\FigureLogics\AbstractFactory\IFactory.cs" />
     <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryLine.cs" />
     <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryEllipse.cs" />
@@ -98,6 +99,11 @@
     <Content Include="Resources\Pen.png" />
     <Content Include="Resources\Rect.png" />
     <Content Include="Resources\Rotate.png" />
+    <None Include="Resources\Новая папка\Arrow.png" />
+    <None Include="Resources\Новая папка\Ellipse.png" />
+    <None Include="Resources\Новая папка\Line.png" />
+    <None Include="Resources\Новая папка\Rectangle.png" />
+    <None Include="Resources\Новая папка\Selection.png" />
     <Content Include="Resources\Рука.png" />
     <Content Include="Resources\Стрелка.png" />
     <Content Include="Resources\Текст.png" />

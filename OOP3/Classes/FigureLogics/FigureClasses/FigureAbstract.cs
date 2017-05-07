@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace OOP3
 {
-    abstract class FigureAbstract : IFigure
+    abstract class FigureAbstract : IFigure, ICloneable
     {
         #region Инфо
 
@@ -38,7 +38,7 @@ namespace OOP3
 
         protected int _selectedPoint;
 
-        public bool Selected { get { return _selected; } set { _selected = value; } }
+        public virtual bool Selected { get { return _selected; } set { _selected = value; } }
 
         protected FigureAbstract(PictureClass PictureController)
         {
@@ -182,7 +182,6 @@ namespace OOP3
 
         public void ResetCorners()
         {
-
             double xMin = double.MaxValue;
             double yMin = double.MaxValue;
             double xMax = double.MinValue;
@@ -239,11 +238,16 @@ namespace OOP3
         /// <param name="rdY">Y нижнего правого угла</param>
         public virtual void IsInSelectionArea(double luX, double luY, double rdX, double rdY)
         {
-            _selected = _corners[1, 0] < rdY || _corners[1, 2] > luY || _corners[0, 2] < luX || _corners[0, 0] > rdX;
+            _selected = 
+                _corners[1, 0] >= rdY &&
+                _corners[1, 2] <= luY &&
+                _corners[0, 2] >= luX &&
+                _corners[0, 0] <= rdX;
         }
 
         public FigureAbstract Clone()
         {
+            _corners = new double[2, 4];
             return (FigureAbstract)MemberwiseClone();
         }
 
@@ -277,5 +281,10 @@ namespace OOP3
         }
 
         protected abstract void _Drawer(int[,] Corners, Graphics g);
+
+        object ICloneable.Clone()
+        {
+            return Clone();
+        }
     }
 }

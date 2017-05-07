@@ -50,7 +50,6 @@ namespace OOP3
             if (_drawing)
             {
                 _controller.Action_MouseMove(e.X, e.Y);
-                _controller.Draw();
             }
         }
 
@@ -62,6 +61,7 @@ namespace OOP3
 
         private void CtrlPanelMain_MouseUp(object sender, MouseEventArgs e)
         {
+            _controller.Action_MouseUp(e.X, e.Y);
             _drawing = false;
         }
 

@@ -45,6 +45,16 @@ namespace OOP3
             Del(corners, _canvas);
         }
 
+        public void DrawSelection(int X0, int Y0, int X, int Y)
+        {
+            _canvas.DrawPolygon(new Pen(Color.Gray),
+                new Point[]{
+                new Point(X0, Y0),
+                new Point(X, Y0),
+                new Point(X, Y),
+                new Point(X0, Y)});
+        }
+
         private int II(double x)
         {
             return I1 + (int)((x - xMin) * (I2 - I1) / (xMax - xMin));
@@ -65,6 +75,10 @@ namespace OOP3
         public Tuple<double, double> GetPoint(int X, int Y)
         {
             return Tuple.Create(XX(X), YY(Y));
+        }
+        public Tuple<double, double> GetPoint(Tuple<int, int> T)
+        {
+            return Tuple.Create(XX(T.Item1), YY(T.Item2));
         }
     }
 }
