@@ -65,9 +65,9 @@ namespace OOP3
         /// </summary>
         /// <param name="x">Х утягиваемого угла.</param>
         /// <param name="y">Y утягиваемого угла.</param>
-        public void ChangeSize(double x, double y)
+        public virtual void ChangeSize(double x, double y)
         {
-            double eps = 2.0;
+            double eps = 5.0;
             switch (_selectedPoint)
             {
                 //Взяли верхний левый угол
@@ -248,7 +248,7 @@ namespace OOP3
             return (FigureAbstract)MemberwiseClone();
         }
 
-        public void PlaceFigure(double x, double y)
+        public virtual void PlaceFigure(double x, double y)
         {
             _corners[0, 0] = _corners[0, 1] = _corners[0, 2] = _corners[0, 3] = x;
             _corners[1, 0] = _corners[1, 1] = _corners[1, 2] = _corners[1, 3] = y;
