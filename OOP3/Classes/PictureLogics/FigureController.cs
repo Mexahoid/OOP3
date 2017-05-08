@@ -27,16 +27,15 @@ namespace OOP3
             set { _specialIndex = value; }
         }
 
-        public FigureController(Panel Canvas, DelegateReDraw Del)
+        public FigureController(Panel Canvas)
         {
             _factories = new List<IFactory>();
             _figures = new List<FigureAbstract>();
-            _picture = new PictureClass(Canvas, Del);
+            _picture = new PictureClass(Canvas);
             _factories.Add(new FactoryEllipse(_picture));
             _factories.Add(new FactoryLine(_picture));
             _factories.Add(new FactoryRectangle(_picture));
             _factories.Add(new FactoryComplex(_picture));
-
         }
 
         private void _CreateFigure(int x, int y)
@@ -158,7 +157,7 @@ namespace OOP3
             }
         }
 
-        public void Draw()
+        private void _Draw()
         {
             _picture.Clear();
             int C = _figures.Count;
@@ -177,7 +176,7 @@ namespace OOP3
             if (_toolIndex == -1)
             {
                 _FindFigure(X, Y);
-                _picture.InvokeEvent();
+                _Draw();
             }
             else
             {
@@ -194,16 +193,16 @@ namespace OOP3
                 {
                     case -1:
                         _MoveFigure(T);
-                        _picture.InvokeEvent();
+                        _Draw();
                         break;
                     case -2:
-                        _picture.InvokeEvent();
+                        _Draw();
                         _picture.DrawSelection(_PrevScreenPos.Item1, _PrevScreenPos.Item2,
                             X, Y);
                         break;
                     default:
                         _FigureSize(X, Y);
-                        _picture.InvokeEvent();
+                        _Draw();
                         break;
                 }
                 _PrevPos = T;
@@ -218,7 +217,7 @@ namespace OOP3
                 if (_PrevScreenPos.Item1 != X || _PrevScreenPos.Item2 != Y)
                     _FindFigureInArea(X, Y);
             }
-            _picture.InvokeEvent();
+            _Draw();
         }
 
         public void Action_Special()
