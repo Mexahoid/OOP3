@@ -54,6 +54,7 @@
     <Compile Include="Classes\FigureLogics\AbstractFactory\FactoryRectangle.cs" />
     <Compile Include="Classes\FigureLogics\FigureClasses\FigureAbstract.cs" />
     <Compile Include="Classes\FigureLogics\Linker\FigureComplex.cs" />
+    <Compile Include="Classes\PictureLogics\ColorScheme.cs" />
     <Compile Include="Classes\PictureLogics\FigureController.cs" />
     <Compile Include="Classes\FigureLogics\FigureClasses\FigureRectangle.cs" />
     <Compile Include="Classes\FigureLogics\FigureClasses\FigureEllipse.cs" />

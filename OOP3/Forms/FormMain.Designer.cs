@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace OOP3
@@ -78,11 +79,19 @@ namespace OOP3
             this.CtrlButEll = new System.Windows.Forms.Button();
             this.CtrlButLine = new System.Windows.Forms.Button();
             this.CtrlGrBSpecials = new System.Windows.Forms.GroupBox();
+            this.CtrlButColFG = new System.Windows.Forms.Button();
+            this.CtrlLblMisc2 = new System.Windows.Forms.Label();
+            this.CtrlLblMisc1 = new System.Windows.Forms.Label();
+            this.CtrlLBDashStyles = new System.Windows.Forms.ListBox();
+            this.CtrlLBFillStyles = new System.Windows.Forms.ListBox();
+            this.CtrlNudWidth = new System.Windows.Forms.NumericUpDown();
+            this.CtrlButColBG = new System.Windows.Forms.Button();
             this.CtrlButUngroup = new System.Windows.Forms.Button();
             this.CtrlButGroup = new System.Windows.Forms.Button();
             this.CtrlTSMain.SuspendLayout();
             this.CtrlGrBTools.SuspendLayout();
             this.CtrlGrBSpecials.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CtrlNudWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // CtrlTSMain
@@ -284,14 +293,170 @@ namespace OOP3
             // 
             // CtrlGrBSpecials
             // 
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlButColFG);
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlLblMisc2);
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlLblMisc1);
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlLBDashStyles);
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlLBFillStyles);
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlNudWidth);
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlButColBG);
             this.CtrlGrBSpecials.Controls.Add(this.CtrlButUngroup);
             this.CtrlGrBSpecials.Controls.Add(this.CtrlButGroup);
             this.CtrlGrBSpecials.Location = new System.Drawing.Point(658, 30);
             this.CtrlGrBSpecials.Name = "CtrlGrBSpecials";
-            this.CtrlGrBSpecials.Size = new System.Drawing.Size(166, 185);
+            this.CtrlGrBSpecials.Size = new System.Drawing.Size(166, 340);
             this.CtrlGrBSpecials.TabIndex = 3;
             this.CtrlGrBSpecials.TabStop = false;
             this.CtrlGrBSpecials.Text = "Опции";
+            // 
+            // CtrlButColFG
+            // 
+            this.CtrlButColFG.BackColor = System.Drawing.Color.Black;
+            this.CtrlButColFG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButColFG.Location = new System.Drawing.Point(6, 238);
+            this.CtrlButColFG.Name = "CtrlButColFG";
+            this.CtrlButColFG.Size = new System.Drawing.Size(50, 50);
+            this.CtrlButColFG.TabIndex = 1;
+            this.CtrlButColFG.Tag = "0";
+            this.CtrlButColFG.UseVisualStyleBackColor = false;
+            this.CtrlButColFG.Click += new System.EventHandler(this.ColorChange);
+            // 
+            // CtrlLblMisc2
+            // 
+            this.CtrlLblMisc2.AutoSize = true;
+            this.CtrlLblMisc2.Location = new System.Drawing.Point(6, 147);
+            this.CtrlLblMisc2.Name = "CtrlLblMisc2";
+            this.CtrlLblMisc2.Size = new System.Drawing.Size(83, 13);
+            this.CtrlLblMisc2.TabIndex = 10;
+            this.CtrlLblMisc2.Text = "Стиль границы";
+            // 
+            // CtrlLblMisc1
+            // 
+            this.CtrlLblMisc1.AutoSize = true;
+            this.CtrlLblMisc1.Location = new System.Drawing.Point(6, 56);
+            this.CtrlLblMisc1.Name = "CtrlLblMisc1";
+            this.CtrlLblMisc1.Size = new System.Drawing.Size(82, 13);
+            this.CtrlLblMisc1.TabIndex = 9;
+            this.CtrlLblMisc1.Text = "Стиль заливки";
+            // 
+            // CtrlLBDashStyles
+            // 
+            this.CtrlLBDashStyles.FormattingEnabled = true;
+            this.CtrlLBDashStyles.Items.AddRange(new object[] {
+            "Solid",
+            "Dash",
+            "Dot",
+            "DashDot",
+            "DashDotDot",
+            "Custom"});
+            this.CtrlLBDashStyles.Location = new System.Drawing.Point(6, 163);
+            this.CtrlLBDashStyles.Name = "CtrlLBDashStyles";
+            this.CtrlLBDashStyles.Size = new System.Drawing.Size(100, 69);
+            this.CtrlLBDashStyles.TabIndex = 8;
+            this.CtrlLBDashStyles.SelectedIndexChanged += new System.EventHandler(this.ColorChange);
+            // 
+            // CtrlLBFillStyles
+            // 
+            this.CtrlLBFillStyles.FormattingEnabled = true;
+            this.CtrlLBFillStyles.Items.AddRange(new object[] {
+            "Solid",
+            "Horizontal",
+            "Min",
+            "Vertical",
+            "ForwardDiagonal",
+            "BackwardDiagonal",
+            "Cross",
+            "LargeGrid",
+            "Max",
+            "DiagonalCross",
+            "Percent05",
+            "Percent10",
+            "Percent20",
+            "Percent25",
+            "Percent30",
+            "Percent40",
+            "Percent50",
+            "Percent60",
+            "Percent70",
+            "Percent75",
+            "Percent80",
+            "Percent90",
+            "LightDownwardDiagonal",
+            "LightUpwardDiagonal",
+            "DarkDownwardDiagonal",
+            "DarkUpwardDiagonal",
+            "WideDownwardDiagonal",
+            "WideUpwardDiagonal",
+            "LightVertical",
+            "LightHorizontal",
+            "NarrowVertical",
+            "NarrowHorizontal",
+            "DarkVertical",
+            "DarkHorizontal",
+            "DashedDownwardDiagonal",
+            "DashedUpwardDiagonal",
+            "DashedHorizontal",
+            "DashedVertical",
+            "SmallConfetti",
+            "LargeConfetti",
+            "ZigZag",
+            "Wave",
+            "DiagonalBrick",
+            "HorizontalBrick",
+            "Weave",
+            "Plaid",
+            "Divot",
+            "DottedGrid",
+            "DottedDiamond",
+            "Shingle",
+            "Trellis",
+            "Sphere",
+            "SmallGrid",
+            "SmallCheckerBoard",
+            "LargeCheckerBoard",
+            "OutlinedDiamond",
+            "SolidDiamond"});
+            this.CtrlLBFillStyles.Location = new System.Drawing.Point(6, 72);
+            this.CtrlLBFillStyles.Name = "CtrlLBFillStyles";
+            this.CtrlLBFillStyles.Size = new System.Drawing.Size(100, 69);
+            this.CtrlLBFillStyles.TabIndex = 7;
+            this.CtrlLBFillStyles.SelectedIndexChanged += new System.EventHandler(this.ColorChange);
+            // 
+            // CtrlNudWidth
+            // 
+            this.CtrlNudWidth.Location = new System.Drawing.Point(118, 58);
+            this.CtrlNudWidth.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.CtrlNudWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CtrlNudWidth.Name = "CtrlNudWidth";
+            this.CtrlNudWidth.Size = new System.Drawing.Size(42, 20);
+            this.CtrlNudWidth.TabIndex = 4;
+            this.CtrlNudWidth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.CtrlNudWidth.ValueChanged += new System.EventHandler(this.ColorChange);
+            // 
+            // CtrlButColBG
+            // 
+            this.CtrlButColBG.BackColor = System.Drawing.Color.White;
+            this.CtrlButColBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButColBG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButColBG.Location = new System.Drawing.Point(25, 260);
+            this.CtrlButColBG.Name = "CtrlButColBG";
+            this.CtrlButColBG.Size = new System.Drawing.Size(50, 50);
+            this.CtrlButColBG.TabIndex = 0;
+            this.CtrlButColBG.Tag = "1";
+            this.CtrlButColBG.UseVisualStyleBackColor = false;
+            this.CtrlButColBG.Click += new System.EventHandler(this.ColorChange);
             // 
             // CtrlButUngroup
             // 
@@ -338,6 +503,8 @@ namespace OOP3
             this.CtrlTSMain.PerformLayout();
             this.CtrlGrBTools.ResumeLayout(false);
             this.CtrlGrBSpecials.ResumeLayout(false);
+            this.CtrlGrBSpecials.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CtrlNudWidth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,6 +533,13 @@ namespace OOP3
         private GroupBox CtrlGrBSpecials;
         private Button CtrlButUngroup;
         private Button CtrlButGroup;
+        private Button CtrlButColBG;
+        private Button CtrlButColFG;
+        private ListBox CtrlLBFillStyles;
+        private NumericUpDown CtrlNudWidth;
+        private ListBox CtrlLBDashStyles;
+        private Label CtrlLblMisc2;
+        private Label CtrlLblMisc1;
     }
 }
 

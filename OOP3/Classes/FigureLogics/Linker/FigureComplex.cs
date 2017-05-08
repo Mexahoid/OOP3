@@ -18,11 +18,6 @@ namespace OOP3
             get { return base.Selected; }
             set
             {
-                /*int C = _figures.Count;
-                for (int i = 0; i < C; i++)
-                {
-                    _figures[i].Selected = value;
-                }*/
                 base.Selected = value;
             }
         }

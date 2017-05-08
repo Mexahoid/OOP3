@@ -27,11 +27,11 @@ namespace OOP3
             set { _specialIndex = value; }
         }
 
-        public FigureController(Panel Canvas)
+        public FigureController(PictureClass PicCtrl)
         {
             _factories = new List<IFactory>();
             _figures = new List<FigureAbstract>();
-            _picture = new PictureClass(Canvas);
+            _picture = PicCtrl;
             _factories.Add(new FactoryEllipse(_picture));
             _factories.Add(new FactoryLine(_picture));
             _factories.Add(new FactoryRectangle(_picture));

@@ -23,7 +23,9 @@ namespace OOP3
             if (_selected)
                 g.DrawRectangle(Pens.LightGray, Corners[0, 0], Corners[1, 0] - 0, 
                     Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
-            g.DrawEllipse(Pens.Black, Corners[0, 0], Corners[1, 0] - 0,
+            g.FillEllipse(_cc.GetBrush(), Corners[0, 0], Corners[1, 0],
+                Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
+            g.DrawEllipse(_cc.GetPen(), Corners[0, 0], Corners[1, 0] - 0,
                 Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
         }
     }

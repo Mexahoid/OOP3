@@ -16,6 +16,13 @@ namespace OOP3
         private int I2, J2;
         private double xMin, yMin, xMax, yMax;
         private Graphics _canvas;
+        private ColorScheme _currentColorScheme;
+
+        public ColorScheme CurrentColorScheme
+        {
+            get { return _currentColorScheme; }
+            set { _currentColorScheme = value; }
+        }
 
         public PictureClass(Panel panel)
         {
@@ -54,7 +61,6 @@ namespace OOP3
                 new Point(X, Y),
                 new Point(X0, Y)});
         }
-
         private int II(double x)
         {
             return I1 + (int)((x - xMin) * (I2 - I1) / (xMax - xMin));

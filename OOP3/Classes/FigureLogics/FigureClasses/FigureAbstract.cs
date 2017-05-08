@@ -32,12 +32,11 @@ namespace OOP3
 
         protected double[,] _corners;
         protected double _xCent, _yCent;
-
         protected PictureClass _picController;
         protected bool _selected;
-
         protected int _selectedPoint;
-
+        protected ColorScheme _cc;
+        
         public virtual bool Selected { get { return _selected; } set { _selected = value; } }
 
         protected FigureAbstract(PictureClass PictureController)
@@ -45,6 +44,7 @@ namespace OOP3
             _corners = new double[2, 4];
             _selected = false;
             _picController = PictureController;
+            _cc = _picController.CurrentColorScheme;
         }
 
         public bool CursorIn(double X, double Y)

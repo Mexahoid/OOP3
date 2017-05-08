@@ -20,7 +20,8 @@ namespace OOP3
 
         protected override void _Drawer(int[,] Corners, Graphics g)
         {
-            g.DrawRectangle(Pens.Black, Corners[0, 0], Corners[1, 0], Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
+            g.FillRectangle(_cc.GetBrush(), Corners[0, 0], Corners[1, 0], Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
+            g.DrawRectangle(_cc.GetPen(), Corners[0, 0], Corners[1, 0], Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
         }
     }
 }
