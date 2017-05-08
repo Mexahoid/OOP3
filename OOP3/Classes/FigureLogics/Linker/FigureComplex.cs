@@ -13,16 +13,19 @@ namespace OOP3
 
         public FigureComplex(PictureClass pic) : base(pic) { }
 
-        public override bool Selected {
+        public override bool Selected
+        {
             get { return base.Selected; }
-            set {
-                int C = _figures.Count;
+            set
+            {
+                /*int C = _figures.Count;
                 for (int i = 0; i < C; i++)
                 {
                     _figures[i].Selected = value;
-                }
+                }*/
                 base.Selected = value;
-            } }
+            }
+        }
 
         public void ComposeIn(List<FigureAbstract> Figures)
         {
@@ -92,6 +95,7 @@ namespace OOP3
 
         public override void Draw()
         {
+            _picController.DrawFigure(_Drawer, _corners);
             int C = _figures.Count;
             for (int i = 0; i < C; i++)
             {
@@ -102,11 +106,6 @@ namespace OOP3
         public override void IsInSelectionArea(double luX, double luY, double rdX, double rdY)
         {
             base.IsInSelectionArea(luX, luY, rdX, rdY);
-            int C = _figures.Count;
-            for (int i = 0; i < C; i++)
-            {
-                _figures[i].Selected = true;
-            }
         }
 
         public IEnumerator<FigureAbstract> GetEnumerator()
@@ -125,7 +124,8 @@ namespace OOP3
 
         protected override void _Drawer(int[,] Corners, Graphics g)
         {
-            throw new NotImplementedException();
+            if (_selected)
+                g.DrawRectangle(Pens.LightGray, Corners[0, 0], Corners[1, 0] - 0, Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
         }
     }
 }

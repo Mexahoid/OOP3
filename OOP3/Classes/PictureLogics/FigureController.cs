@@ -130,13 +130,21 @@ namespace OOP3
             _corners[1, 2] = yMin;
             _corners[1, 3] = yMin;
 
+            int Num = 0;
+            int j = 0;
             for (int i = 0; i < C; i++)
             {
                 _figures[i].IsInSelectionArea(
                     _corners[0, 0], _corners[1, 0],
                     _corners[0, 2], _corners[1, 2]);
-
+                if (_figures[i].Selected)
+                {
+                    Num++;
+                    j = i;
+                }
             }
+            if (Num == 1)
+                _selectedFigureIndex = j;
         }
 
         private void _MoveFigure(Tuple<double, double> T)
@@ -242,6 +250,7 @@ namespace OOP3
                     if (_figures[i].Selected)
                     {
                         Figures.Add(_figures[i]);
+                        Figures[Figures.Count - 1].Selected = false;
                         _figures.RemoveAt(i--);
                         C--;
                     }

@@ -17,6 +17,7 @@ namespace OOP3
         {
             InitializeComponent();
             _controller = new FigureController(CtrlPanelMain);
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint, true);
         }
 
         private void CtrlTSMINew_Click(object sender, EventArgs e)
