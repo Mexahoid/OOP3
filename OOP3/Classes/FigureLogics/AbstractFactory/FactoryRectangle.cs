@@ -9,14 +9,16 @@ namespace OOP3
     {
         private readonly FigureRectangle _protoRect;
 
-        public FactoryRectangle(PictureClass PicController)
+        public FactoryRectangle(PictureClass PicController, ColorScheme CS)
         {
-            _protoRect = new FigureRectangle(PicController);
+            _protoRect = new FigureRectangle(PicController, CS);
         }
 
-        public FigureAbstract CreateFigure()
+        public FigureAbstract CreateFigure(ColorScheme ColorScheme)
         {
-            return _protoRect.Clone();
+            FigureAbstract Out = _protoRect.Clone();
+            Out.CC = ColorScheme;
+            return Out;
         }
     }
 }

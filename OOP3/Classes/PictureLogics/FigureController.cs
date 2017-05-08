@@ -18,6 +18,13 @@ namespace OOP3
         private Tuple<double, double> _PrevPos;
         private Tuple<int, int> _PrevScreenPos;
         private bool _drawing;
+        private ColorScheme _currentColorScheme;
+
+        public ColorScheme CurrentColorScheme
+        {
+            get { return _currentColorScheme; }
+            set { _currentColorScheme = value; }
+        }
 
         public int ToolIndex { get { return _toolIndex; } set { _toolIndex = value; } }
 
@@ -32,17 +39,17 @@ namespace OOP3
             _factories = new List<IFactory>();
             _figures = new List<FigureAbstract>();
             _picture = PicCtrl;
-            _factories.Add(new FactoryEllipse(_picture));
-            _factories.Add(new FactoryLine(_picture));
-            _factories.Add(new FactoryRectangle(_picture));
-            _factories.Add(new FactoryComplex(_picture));
+            _factories.Add(new FactoryEllipse(_picture, _currentColorScheme));
+            _factories.Add(new FactoryLine(_picture, _currentColorScheme));
+            _factories.Add(new FactoryRectangle(_picture, _currentColorScheme));
+            _factories.Add(new FactoryComplex(_picture, _currentColorScheme));
         }
 
         private void _CreateFigure(int x, int y)
         {
             if (_toolIndex > -1)
             {
-                _figures.Add(_factories[_toolIndex].CreateFigure());
+                _figures.Add(_factories[_toolIndex].CreateFigure(_currentColorScheme));
                 _PrevPos = _picture.GetPoint(x, y);
                 _figures[_figures.Count - 1].PlaceFigure(_PrevPos.Item1, _PrevPos.Item2);
                 _figures[_figures.Count - 1].Selected = true;
@@ -173,6 +180,7 @@ namespace OOP3
             {
                 _figures[i].Draw();
             }
+            _picture.FinalDraw();
         }
 
         public void Action_MouseDown(int X, int Y)
@@ -255,7 +263,7 @@ namespace OOP3
                         C--;
                     }
                 }
-                FigureComplex NewCFg = _factories[3].CreateFigure() as FigureComplex;
+                FigureComplex NewCFg = _factories[3].CreateFigure(_currentColorScheme) as FigureComplex;
                 NewCFg.ComposeIn(Figures);
                 _figures.Add(NewCFg);
             }

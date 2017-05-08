@@ -8,7 +8,7 @@ namespace OOP3
 {
     class FigureEllipse : FigureAbstract
     {
-        public FigureEllipse(PictureClass pic) : base(pic)
+        public FigureEllipse(PictureClass pic, ColorScheme ColorScheme) : base(pic, ColorScheme)
         {
 
         }

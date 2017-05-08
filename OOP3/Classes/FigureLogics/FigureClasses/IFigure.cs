@@ -29,5 +29,7 @@ namespace OOP3
         bool SelectPoint(double x, double y);
 
         void SelectFigure(double x, double y);
+
+        ColorScheme CC { set; }
     }
 }

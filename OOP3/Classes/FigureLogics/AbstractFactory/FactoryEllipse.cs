@@ -9,14 +9,16 @@ namespace OOP3
     {
         private readonly FigureEllipse _protoEll;
 
-        public FactoryEllipse(PictureClass PicController)
+        public FactoryEllipse(PictureClass PicController, ColorScheme CS)
         {
-            _protoEll = new FigureEllipse(PicController);
+            _protoEll = new FigureEllipse(PicController, CS);
         }
 
-        public FigureAbstract CreateFigure()
+        public FigureAbstract CreateFigure(ColorScheme ColorScheme)
         {
-            return _protoEll.Clone();
+            FigureAbstract Out = _protoEll.Clone();
+            Out.CC = ColorScheme;
+            return Out;
         }
     }
 }

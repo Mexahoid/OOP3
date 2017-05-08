@@ -9,12 +9,12 @@ namespace OOP3
     {
         private readonly FigureComplex _protoComplex;
 
-        public FactoryComplex(PictureClass PicController)
+        public FactoryComplex(PictureClass PicController, ColorScheme CS)
         {
-            _protoComplex = new FigureComplex(PicController);
+            _protoComplex = new FigureComplex(PicController, CS);
         }
 
-        public FigureAbstract CreateFigure()
+        public FigureAbstract CreateFigure(ColorScheme ColorScheme)
         {
             return _protoComplex.Clone();
         }

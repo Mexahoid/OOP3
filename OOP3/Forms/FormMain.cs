@@ -13,23 +13,21 @@ namespace OOP3
     public partial class MainForm : Form
     {
         private FigureController _controller;
-        private PictureClass _picture;
         private ColorScheme _currentColorScheme;
 
         public MainForm()
         {
             InitializeComponent();
-
+            CtrlLBFillStyles.SelectedIndex = 0;
+            CtrlLBDashStyles.SelectedIndex = 0;
             _currentColorScheme = new ColorScheme();
             _currentColorScheme.Hatches = (HatchStyle[])Enum.GetValues(typeof(HatchStyle));
             _currentColorScheme.Dashes = (DashStyle[])Enum.GetValues(typeof(DashStyle));
             _currentColorScheme.ColorBackground = Color.White;
             _currentColorScheme.ColorForeground = Color.Black;
             _currentColorScheme.Width = 1;
-            CtrlLBFillStyles.SelectedIndex = CtrlLBDashStyles.SelectedIndex = 0;
-            _picture = new PictureClass(CtrlPanelMain);
-            _picture.CurrentColorScheme = _currentColorScheme;
-            _controller = new FigureController(_picture);
+            _controller = new FigureController(new PictureClass(CtrlPanelMain));
+            _controller.CurrentColorScheme = _currentColorScheme;
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint, true);
         }
 
@@ -91,21 +89,24 @@ namespace OOP3
 
         private void ColorChange(object sender, EventArgs e)
         {
-            if (sender.GetType() == typeof(Button))
-                using (ColorDialog CD = new ColorDialog())
-                {
-                    if (CD.ShowDialog() == DialogResult.OK)
+            if (_controller != null)
+            {
+                if (sender.GetType() == typeof(Button))
+                    using (ColorDialog CD = new ColorDialog())
                     {
-                        if ((sender as Control).Tag.Equals("0"))
-                            CtrlButColFG.BackColor = _currentColorScheme.ColorForeground = CD.Color;
-                        else
-                            CtrlButColBG.BackColor = _currentColorScheme.ColorBackground = CD.Color;
+                        if (CD.ShowDialog() == DialogResult.OK)
+                        {
+                            if ((sender as Control).Tag.Equals("0"))
+                                CtrlButColFG.BackColor = _currentColorScheme.ColorForeground = CD.Color;
+                            else
+                                CtrlButColBG.BackColor = _currentColorScheme.ColorBackground = CD.Color;
+                        }
                     }
-                }
-            _currentColorScheme.SelectedFillIndex = CtrlLBFillStyles.SelectedIndex;
-            _currentColorScheme.SelectedDashIndex = CtrlLBDashStyles.SelectedIndex;
-            _currentColorScheme.Width = (int)CtrlNudWidth.Value;
-            _picture.CurrentColorScheme = _currentColorScheme;
+                _currentColorScheme.SelectedFillIndex = CtrlLBFillStyles.SelectedIndex;
+                _currentColorScheme.SelectedDashIndex = CtrlLBDashStyles.SelectedIndex;
+                _currentColorScheme.Width = (int)CtrlNudWidth.Value;
+                _controller.CurrentColorScheme = _currentColorScheme;
+            }
         }
     }
 }

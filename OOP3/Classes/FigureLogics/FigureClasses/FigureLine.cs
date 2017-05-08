@@ -8,7 +8,8 @@ namespace OOP3
 {
     class FigureLine : FigureAbstract
     {
-        public FigureLine(PictureClass pic) : base(pic)
+
+        public FigureLine(PictureClass pic, ColorScheme ColorScheme) : base(pic, ColorScheme)
         {
 
         }

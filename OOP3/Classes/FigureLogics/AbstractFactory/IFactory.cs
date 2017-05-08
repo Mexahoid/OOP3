@@ -7,6 +7,6 @@ namespace OOP3
 {
     interface IFactory
     {
-        FigureAbstract CreateFigure();
+        FigureAbstract CreateFigure(ColorScheme ColorScheme);
     }
 }

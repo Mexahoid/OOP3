@@ -16,19 +16,16 @@ namespace OOP3
         private int I2, J2;
         private double xMin, yMin, xMax, yMax;
         private Graphics _canvas;
-        private ColorScheme _currentColorScheme;
-
-        public ColorScheme CurrentColorScheme
-        {
-            get { return _currentColorScheme; }
-            set { _currentColorScheme = value; }
-        }
+        private Bitmap _tb;
+        private Graphics _temp;
 
         public PictureClass(Panel panel)
         {
             _canvas = panel.CreateGraphics();
             I2 = panel.Width;
             J2 = panel.Height;
+            _tb = new Bitmap(I2, J2);
+            _temp = Graphics.FromImage(_tb);
             xMin = -300 / 8F; xMax = 300 + 300 / 8F;
             int kx = Screen.PrimaryScreen.Bounds.Width;
             int ky = Screen.PrimaryScreen.Bounds.Height;
@@ -38,7 +35,7 @@ namespace OOP3
 
         public void Clear()
         {
-            _canvas.Clear(Color.White);
+            _temp.Clear(Color.White);
         }
 
         public void DrawFigure(DrawerDelegate Del, double[,] Corners)
@@ -49,7 +46,12 @@ namespace OOP3
                 corners[0, i] = II(Corners[0, i]);
                 corners[1, 3 - i] = JJ(Corners[1, i]);
             }
-            Del(corners, _canvas);
+            Del(corners, _temp);
+        }
+
+        public void FinalDraw()
+        {
+            _canvas.DrawImage(_tb, 0, 0);
         }
 
         public void DrawSelection(int X0, int Y0, int X, int Y)
@@ -60,6 +62,7 @@ namespace OOP3
                 new Point(X, Y0),
                 new Point(X, Y),
                 new Point(X0, Y)});
+            FinalDraw();
         }
         private int II(double x)
         {

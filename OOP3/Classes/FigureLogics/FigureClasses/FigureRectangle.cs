@@ -8,7 +8,7 @@ namespace OOP3
 {
     class FigureRectangle : FigureAbstract
     {
-        public FigureRectangle(PictureClass pic) : base(pic)
+        public FigureRectangle(PictureClass pic, ColorScheme ColorScheme) : base(pic, ColorScheme)
         {
 
         }

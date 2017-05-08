@@ -11,7 +11,7 @@ namespace OOP3
     {
         private List<FigureAbstract> _figures;
 
-        public FigureComplex(PictureClass pic) : base(pic) { }
+        public FigureComplex(PictureClass pic, ColorScheme CS) : base(pic, CS) { }
 
         public override bool Selected
         {

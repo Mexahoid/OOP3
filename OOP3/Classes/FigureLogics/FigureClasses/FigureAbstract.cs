@@ -31,7 +31,6 @@ namespace OOP3
         #endregion
 
         protected double[,] _corners;
-        protected double _xCent, _yCent;
         protected PictureClass _picController;
         protected bool _selected;
         protected int _selectedPoint;
@@ -39,12 +38,14 @@ namespace OOP3
         
         public virtual bool Selected { get { return _selected; } set { _selected = value; } }
 
-        protected FigureAbstract(PictureClass PictureController)
+        public ColorScheme CC { set { _cc = value; } }
+
+        protected FigureAbstract(PictureClass PictureController, ColorScheme ColorScheme)
         {
             _corners = new double[2, 4];
             _selected = false;
             _picController = PictureController;
-            _cc = _picController.CurrentColorScheme;
+            _cc = ColorScheme;
         }
 
         public bool CursorIn(double X, double Y)
@@ -174,10 +175,6 @@ namespace OOP3
                     _corners[0, 0] = x;
                     break;
             }
-
-            _xCent = (_corners[0, 1] + _corners[0, 2] + _corners[0, 3] + _corners[0, 0]) / 4;
-            _yCent = (_corners[1, 1] + _corners[1, 2] + _corners[1, 3] + _corners[1, 0]) / 4;
-
         }
 
         public void ResetCorners()
@@ -255,9 +252,6 @@ namespace OOP3
         {
             _corners[0, 0] = _corners[0, 1] = _corners[0, 2] = _corners[0, 3] = x;
             _corners[1, 0] = _corners[1, 1] = _corners[1, 2] = _corners[1, 3] = y;
-
-            _xCent = x;
-            _yCent = y;
             _selectedPoint = 2;
         }
 

@@ -9,14 +9,16 @@ namespace OOP3
     {
         private readonly FigureLine _protoLine;
 
-        public FactoryLine(PictureClass PicController)
+        public FactoryLine(PictureClass PicController, ColorScheme CS)
         {
-            _protoLine = new FigureLine(PicController);
+            _protoLine = new FigureLine(PicController, CS);
         }
 
-        public FigureAbstract CreateFigure()
+        public FigureAbstract CreateFigure(ColorScheme ColorScheme)
         {
-            return _protoLine.Clone();
+            FigureAbstract Out = _protoLine.Clone();
+            Out.CC = ColorScheme;
+            return Out;
         }
     }
 }
