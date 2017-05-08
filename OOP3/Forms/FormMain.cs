@@ -16,8 +16,7 @@ namespace OOP3
         public MainForm()
         {
             InitializeComponent();
-            _controller = new FigureController(CtrlPanelMain, OnPaint);
-            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint, true);
+            _controller = new FigureController(CtrlPanelMain);
         }
 
         private void CtrlTSMINew_Click(object sender, EventArgs e)
@@ -69,11 +68,6 @@ namespace OOP3
         {
             _controller.SpecialIndex = Convert.ToInt32((sender as Button).Tag);
             _controller.Action_Special();
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            _controller.Draw();
         }
     }
 }

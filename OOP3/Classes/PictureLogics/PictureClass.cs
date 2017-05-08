@@ -9,12 +9,6 @@ namespace OOP3
 {
     public delegate void DrawerDelegate(int[,] Corners, Graphics g);
 
-    /// <summary>
-    /// Делегат для события перерисовки.
-    /// </summary>
-    /// <param name="e">Рабочая графика.</param>
-    public delegate void DelegateReDraw(PaintEventArgs e);
-
     class PictureClass
     {
         private int I1 = 0;
@@ -23,32 +17,9 @@ namespace OOP3
         private double xMin, yMin, xMax, yMax;
         private Graphics _canvas;
 
-        /// <summary>
-        /// Изображение, которым оперируют рисовальщики.
-        /// </summary>
-        private Bitmap Bitmap;
-
-        /// <summary>
-        /// Главный экземпляр графики.
-        /// </summary>
-        private PaintEventArgs TempCanv;
-        
-        /// <summary>
-        /// Событие для перерисовки графики.
-        /// </summary>
-        private event DelegateReDraw _eventReDraw;
-        
-        public void InvokeEvent()
+        public PictureClass(Panel panel)
         {
-            _eventReDraw(TempCanv);
-        }
-
-        public PictureClass(Panel panel, DelegateReDraw Del)
-        {
-            TempCanv = new PaintEventArgs(panel.CreateGraphics(), panel.ClientRectangle);
-            Bitmap = new Bitmap(panel.Width, panel.Height);
-            _canvas = Graphics.FromImage(Bitmap);
-            _eventReDraw += Del;
+            _canvas = panel.CreateGraphics();
             I2 = panel.Width;
             J2 = panel.Height;
             xMin = -300 / 8F; xMax = 300 + 300 / 8F;
@@ -71,9 +42,7 @@ namespace OOP3
                 corners[0, i] = II(Corners[0, i]);
                 corners[1, 3 - i] = JJ(Corners[1, i]);
             }
-            //Del(corners, _canvas);
             Del(corners, _canvas);
-            TempCanv.Graphics.DrawImage(Bitmap, 0, 0);
         }
 
         public void DrawSelection(int X0, int Y0, int X, int Y)
