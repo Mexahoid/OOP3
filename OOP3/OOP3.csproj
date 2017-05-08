@@ -92,21 +92,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Resources\Ellips.png" />
-    <Content Include="Resources\MoveNode 0.bmp" />
-    <Content Include="Resources\Pen.png" />
-    <Content Include="Resources\Rect.png" />
-    <Content Include="Resources\Rotate.png" />
+    <None Include="Resources\Group.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Новая папка\Arrow.png" />
     <None Include="Resources\Новая папка\Ellipse.png" />
     <None Include="Resources\Новая папка\Line.png" />
     <None Include="Resources\Новая папка\Rectangle.png" />
     <None Include="Resources\Новая папка\Selection.png" />
-    <Content Include="Resources\Рука.png" />
-    <Content Include="Resources\Стрелка.png" />
-    <Content Include="Resources\Текст.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ungroup.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

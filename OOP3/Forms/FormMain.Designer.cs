@@ -72,13 +72,17 @@ namespace OOP3
             this.CtrlTSMILoadFigures = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlPanelMain = new System.Windows.Forms.Panel();
             this.CtrlGrBTools = new System.Windows.Forms.GroupBox();
+            this.CtrlButArea = new System.Windows.Forms.Button();
             this.CtrlButSel = new System.Windows.Forms.Button();
             this.CtrlButRect = new System.Windows.Forms.Button();
             this.CtrlButEll = new System.Windows.Forms.Button();
             this.CtrlButLine = new System.Windows.Forms.Button();
-            this.CtrlButArea = new System.Windows.Forms.Button();
+            this.CtrlGrBSpecials = new System.Windows.Forms.GroupBox();
+            this.CtrlButUngroup = new System.Windows.Forms.Button();
+            this.CtrlButGroup = new System.Windows.Forms.Button();
             this.CtrlTSMain.SuspendLayout();
             this.CtrlGrBTools.SuspendLayout();
+            this.CtrlGrBSpecials.SuspendLayout();
             this.SuspendLayout();
             // 
             // CtrlTSMain
@@ -208,6 +212,20 @@ namespace OOP3
             this.CtrlGrBTools.TabStop = false;
             this.CtrlGrBTools.Text = "Инструменты";
             // 
+            // CtrlButArea
+            // 
+            this.CtrlButArea.BackgroundImage = global::OOP3.Properties.Resources.Selection;
+            this.CtrlButArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButArea.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButArea.Location = new System.Drawing.Point(38, 50);
+            this.CtrlButArea.Name = "CtrlButArea";
+            this.CtrlButArea.Size = new System.Drawing.Size(26, 25);
+            this.CtrlButArea.TabIndex = 4;
+            this.CtrlButArea.Tag = "-2";
+            this.CtrlButArea.UseVisualStyleBackColor = true;
+            this.CtrlButArea.Click += new System.EventHandler(this.CtrlButTool_Click);
+            // 
             // CtrlButSel
             // 
             this.CtrlButSel.BackgroundImage = global::OOP3.Properties.Resources.Arrow;
@@ -264,19 +282,44 @@ namespace OOP3
             this.CtrlButLine.UseVisualStyleBackColor = true;
             this.CtrlButLine.Click += new System.EventHandler(this.CtrlButTool_Click);
             // 
-            // CtrlButArea
+            // CtrlGrBSpecials
             // 
-            this.CtrlButArea.BackgroundImage = global::OOP3.Properties.Resources.Selection;
-            this.CtrlButArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CtrlButArea.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.CtrlButArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CtrlButArea.Location = new System.Drawing.Point(38, 50);
-            this.CtrlButArea.Name = "CtrlButArea";
-            this.CtrlButArea.Size = new System.Drawing.Size(26, 25);
-            this.CtrlButArea.TabIndex = 4;
-            this.CtrlButArea.Tag = "-2";
-            this.CtrlButArea.UseVisualStyleBackColor = true;
-            this.CtrlButArea.Click += new System.EventHandler(this.CtrlButTool_Click);
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlButUngroup);
+            this.CtrlGrBSpecials.Controls.Add(this.CtrlButGroup);
+            this.CtrlGrBSpecials.Location = new System.Drawing.Point(658, 30);
+            this.CtrlGrBSpecials.Name = "CtrlGrBSpecials";
+            this.CtrlGrBSpecials.Size = new System.Drawing.Size(166, 185);
+            this.CtrlGrBSpecials.TabIndex = 3;
+            this.CtrlGrBSpecials.TabStop = false;
+            this.CtrlGrBSpecials.Text = "Опции";
+            // 
+            // CtrlButUngroup
+            // 
+            this.CtrlButUngroup.BackgroundImage = global::OOP3.Properties.Resources.Ungroup;
+            this.CtrlButUngroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButUngroup.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButUngroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButUngroup.Location = new System.Drawing.Point(38, 19);
+            this.CtrlButUngroup.Name = "CtrlButUngroup";
+            this.CtrlButUngroup.Size = new System.Drawing.Size(26, 25);
+            this.CtrlButUngroup.TabIndex = 6;
+            this.CtrlButUngroup.Tag = "1";
+            this.CtrlButUngroup.UseVisualStyleBackColor = true;
+            this.CtrlButUngroup.Click += new System.EventHandler(this.CtrlButSpecial_Click);
+            // 
+            // CtrlButGroup
+            // 
+            this.CtrlButGroup.BackgroundImage = global::OOP3.Properties.Resources.Group;
+            this.CtrlButGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButGroup.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButGroup.Location = new System.Drawing.Point(6, 19);
+            this.CtrlButGroup.Name = "CtrlButGroup";
+            this.CtrlButGroup.Size = new System.Drawing.Size(26, 25);
+            this.CtrlButGroup.TabIndex = 5;
+            this.CtrlButGroup.Tag = "0";
+            this.CtrlButGroup.UseVisualStyleBackColor = true;
+            this.CtrlButGroup.Click += new System.EventHandler(this.CtrlButSpecial_Click);
             // 
             // MainForm
             // 
@@ -284,6 +327,7 @@ namespace OOP3
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(836, 620);
+            this.Controls.Add(this.CtrlGrBSpecials);
             this.Controls.Add(this.CtrlGrBTools);
             this.Controls.Add(this.CtrlPanelMain);
             this.Controls.Add(this.CtrlTSMain);
@@ -293,6 +337,7 @@ namespace OOP3
             this.CtrlTSMain.ResumeLayout(false);
             this.CtrlTSMain.PerformLayout();
             this.CtrlGrBTools.ResumeLayout(false);
+            this.CtrlGrBSpecials.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,6 +363,9 @@ namespace OOP3
         private Button CtrlButLine;
         private Button CtrlButSel;
         private Button CtrlButArea;
+        private GroupBox CtrlGrBSpecials;
+        private Button CtrlButUngroup;
+        private Button CtrlButGroup;
     }
 }
 

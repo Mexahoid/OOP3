@@ -83,6 +83,16 @@ namespace OOP3.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Group {
+            get {
+                object obj = ResourceManager.GetObject("Group", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Line {
             get {
                 object obj = ResourceManager.GetObject("Line", resourceCulture);
@@ -106,6 +116,16 @@ namespace OOP3.Properties {
         internal static System.Drawing.Bitmap Selection {
             get {
                 object obj = ResourceManager.GetObject("Selection", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ungroup {
+            get {
+                object obj = ResourceManager.GetObject("Ungroup", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

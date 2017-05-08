@@ -12,7 +12,6 @@ namespace OOP3
     public partial class MainForm : Form
     {
         private FigureController _controller;
-        private bool _drawing;
 
         public MainForm()
         {
@@ -47,27 +46,28 @@ namespace OOP3
 
         private void CtrlPanelMain_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_drawing)
-            {
-                _controller.Action_MouseMove(e.X, e.Y);
-            }
+            _controller.Action_MouseMove(e.X, e.Y);
         }
 
         private void CtrlPanelMain_MouseDown(object sender, MouseEventArgs e)
         {
             _controller.Action_MouseDown(e.X, e.Y);
-            _drawing = true;
         }
 
         private void CtrlPanelMain_MouseUp(object sender, MouseEventArgs e)
         {
             _controller.Action_MouseUp(e.X, e.Y);
-            _drawing = false;
         }
 
         private void CtrlButTool_Click(object sender, EventArgs e)
         {
             _controller.ToolIndex = Convert.ToInt32((sender as Button).Tag);
+        }
+
+        private void CtrlButSpecial_Click(object sender, EventArgs e)
+        {
+            _controller.SpecialIndex = Convert.ToInt32((sender as Button).Tag);
+            _controller.Action_Special();
         }
     }
 }

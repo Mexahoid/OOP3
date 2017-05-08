@@ -13,11 +13,19 @@ namespace OOP3
         private List<IFactory> _factories;
         private List<FigureAbstract> _figures;
         private int _toolIndex = -1;
+        private int _specialIndex = -1;
         private int _selectedFigureIndex = -1;
         private Tuple<double, double> _PrevPos;
         private Tuple<int, int> _PrevScreenPos;
+        private bool _drawing;
 
         public int ToolIndex { get { return _toolIndex; } set { _toolIndex = value; } }
+
+        public int SpecialIndex
+        {
+            get { return _specialIndex; }
+            set { _specialIndex = value; }
+        }
 
         public FigureController(Panel Canvas)
         {
@@ -121,26 +129,14 @@ namespace OOP3
             _corners[1, 1] = yMax;
             _corners[1, 2] = yMin;
             _corners[1, 3] = yMin;
-            
-            List<FigureAbstract> Figures = new List<FigureAbstract>();
+
             for (int i = 0; i < C; i++)
             {
                 _figures[i].IsInSelectionArea(
                     _corners[0, 0], _corners[1, 0],
                     _corners[0, 2], _corners[1, 2]);
-               /* _figures[i].IsInSelectionArea(
-                LD.Item1, RU.Item2,
-                RU.Item1, LD.Item1);*/
-                if (_figures[i].Selected)
-                {
-                    Figures.Add(_figures[i]);
-                    _figures.RemoveAt(i--);
-                    C--;
-                }
+
             }
-            FigureComplex NewCFg = _factories[3].CreateFigure() as FigureComplex;
-            NewCFg.ComposeIn(Figures);
-            _figures.Add(NewCFg);
         }
 
         private void _MoveFigure(Tuple<double, double> T)
@@ -173,6 +169,7 @@ namespace OOP3
 
         public void Action_MouseDown(int X, int Y)
         {
+            _drawing = true;
             _PrevScreenPos = new Tuple<int, int>(X, Y);
             _PrevPos = _picture.GetPoint(X, Y);
             _Deselect();
@@ -189,34 +186,84 @@ namespace OOP3
 
         public void Action_MouseMove(int X, int Y)
         {
-            Tuple<double, double> T = _picture.GetPoint(X, Y);
-            switch (_toolIndex)
+            if (_drawing)
             {
-                case -1:
-                    _MoveFigure(T);
-                    _Draw();
-                    break;
-                case -2:
-                    _Draw();
-                    _picture.DrawSelection(_PrevScreenPos.Item1, _PrevScreenPos.Item2,
-                        X, Y);
-                    break;
-                default:
-                    _FigureSize(X, Y);
-                    _Draw();
-                    break;
+                Tuple<double, double> T = _picture.GetPoint(X, Y);
+                switch (_toolIndex)
+                {
+                    case -1:
+                        _MoveFigure(T);
+                        _Draw();
+                        break;
+                    case -2:
+                        _Draw();
+                        _picture.DrawSelection(_PrevScreenPos.Item1, _PrevScreenPos.Item2,
+                            X, Y);
+                        break;
+                    default:
+                        _FigureSize(X, Y);
+                        _Draw();
+                        break;
+                }
+                _PrevPos = T;
             }
-            _PrevPos = T;
         }
 
         public void Action_MouseUp(int X, int Y)
         {
+            _drawing = false;
             if (_toolIndex == -2)
             {
-                if(_PrevScreenPos.Item1 != X || _PrevScreenPos.Item2 != Y)
-                _FindFigureInArea(X, Y);
+                if (_PrevScreenPos.Item1 != X || _PrevScreenPos.Item2 != Y)
+                    _FindFigureInArea(X, Y);
             }
             _Draw();
+        }
+
+        public void Action_Special()
+        {
+            switch (_specialIndex)
+            {
+                case 0:
+                case 1:
+                    _GroupAction();
+                    break;
+            }
+        }
+
+        private void _GroupAction()
+        {
+            List<FigureAbstract> Figures = new List<FigureAbstract>();
+            if (_specialIndex == 0)
+            {
+                int C = _figures.Count;
+                for (int i = 0; i < C; i++)
+                {
+                    if (_figures[i].Selected)
+                    {
+                        Figures.Add(_figures[i]);
+                        _figures.RemoveAt(i--);
+                        C--;
+                    }
+                }
+                FigureComplex NewCFg = _factories[3].CreateFigure() as FigureComplex;
+                NewCFg.ComposeIn(Figures);
+                _figures.Add(NewCFg);
+            }
+            else
+            {
+                if (_figures[_selectedFigureIndex].GetType() == typeof(FigureComplex))
+                {
+                    Figures = (_figures[_selectedFigureIndex] as FigureComplex).Decompose();
+                    int C = Figures.Count;
+                    _figures.RemoveAt(_selectedFigureIndex);
+                    for (int i = 0; i < C; i++)
+                    {
+                        _figures.Add(Figures[i]);
+                    }
+                }
+                _Deselect();
+            }
         }
     }
 }
