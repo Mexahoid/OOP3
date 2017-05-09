@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace OOP3
 {
@@ -25,9 +26,11 @@ namespace OOP3
             get { return _currentColorScheme; }
             set { _currentColorScheme = value; }
         }
-
-        public int ToolIndex { get { return _toolIndex; } set { _toolIndex = value; } }
-
+        public int ToolIndex
+        {
+            get { return _toolIndex; }
+            set { _toolIndex = value; }
+        }
         public int SpecialIndex
         {
             get { return _specialIndex; }
@@ -183,70 +186,6 @@ namespace OOP3
             _picture.FinalDraw();
         }
 
-        public void Action_MouseDown(int X, int Y)
-        {
-            _drawing = true;
-            _PrevScreenPos = new Tuple<int, int>(X, Y);
-            _PrevPos = _picture.GetPoint(X, Y);
-            _Deselect();
-            if (_toolIndex == -1)
-            {
-                _FindFigure(X, Y);
-                _Draw();
-            }
-            else
-            {
-                _CreateFigure(X, Y);
-            }
-        }
-
-        public void Action_MouseMove(int X, int Y)
-        {
-            if (_drawing)
-            {
-                Tuple<double, double> T = _picture.GetPoint(X, Y);
-                switch (_toolIndex)
-                {
-                    case -1:
-                        _MoveFigure(T);
-                        _Draw();
-                        break;
-                    case -2:
-                        _Draw();
-                        _picture.DrawSelection(_PrevScreenPos.Item1, _PrevScreenPos.Item2,
-                            X, Y);
-                        break;
-                    default:
-                        _FigureSize(X, Y);
-                        _Draw();
-                        break;
-                }
-                _PrevPos = T;
-            }
-        }
-
-        public void Action_MouseUp(int X, int Y)
-        {
-            _drawing = false;
-            if (_toolIndex == -2)
-            {
-                if (_PrevScreenPos.Item1 != X || _PrevScreenPos.Item2 != Y)
-                    _FindFigureInArea(X, Y);
-            }
-            _Draw();
-        }
-
-        public void Action_Special()
-        {
-            switch (_specialIndex)
-            {
-                case 0:
-                case 1:
-                    _GroupAction();
-                    break;
-            }
-        }
-
         private void _GroupAction()
         {
             List<FigureAbstract> Figures = new List<FigureAbstract>();
@@ -281,6 +220,84 @@ namespace OOP3
                 }
                 _Deselect();
             }
+        }
+
+        public void Action_MouseDown(int X, int Y)
+        {
+            _drawing = true;
+            _PrevScreenPos = new Tuple<int, int>(X, Y);
+            _PrevPos = _picture.GetPoint(X, Y);
+            _Deselect();
+            if (_toolIndex == -1)
+            {
+                _FindFigure(X, Y);
+                _Draw();
+            }
+            else
+            {
+                _CreateFigure(X, Y);
+            }
+        }
+        public void Action_MouseMove(int X, int Y)
+        {
+            if (_drawing)
+            {
+                Tuple<double, double> T = _picture.GetPoint(X, Y);
+                switch (_toolIndex)
+                {
+                    case -1:
+                        _MoveFigure(T);
+                        _Draw();
+                        break;
+                    case -2:
+                        _Draw();
+                        _picture.DrawSelection(_PrevScreenPos.Item1, _PrevScreenPos.Item2,
+                            X, Y);
+                        break;
+                    default:
+                        _FigureSize(X, Y);
+                        _Draw();
+                        break;
+                }
+                _PrevPos = T;
+            }
+        }
+        public void Action_MouseUp(int X, int Y)
+        {
+            _drawing = false;
+            if (_toolIndex == -2)
+            {
+                if (_PrevScreenPos.Item1 != X || _PrevScreenPos.Item2 != Y)
+                    _FindFigureInArea(X, Y);
+            }
+            _Draw();
+        }
+        public void Action_Special()
+        {
+            switch (_specialIndex)
+            {
+                case 0:
+                case 1:
+                    _GroupAction();
+                    break;
+            }
+        }
+
+        public void Save(string Path)
+        {
+            string Out = Properties.Resources.SVGStart;
+            Tuple<int, int> T = _picture.GetDims();
+            Out += "\nheight = \"" + T.Item2 + "px\"  width = \"" + T.Item1 + "px\">\n";
+            int C = _figures.Count;
+            XYIJ II = _picture.GetDel(true);
+            XYIJ JJ = _picture.GetDel(false);
+            for (int i = 0; i < C; i++)
+            {
+                _figures[i].Save(ref Out, II, JJ);
+            }
+            Out += "</svg>";
+            using (StreamWriter SW = new StreamWriter(Path))
+                SW.Write(Out);
         }
     }
 }

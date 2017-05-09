@@ -121,6 +121,20 @@ namespace OOP3.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+        ///&lt;svg version = &quot;1.1&quot;
+        ///     baseProfile=&quot;full&quot;
+        ///     xmlns = &quot;http://www.w3.org/2000/svg&quot; 
+        ///     xmlns:xlink = &quot;http://www.w3.org/1999/xlink&quot;
+        ///     xmlns:ev = &quot;http://www.w3.org/2001/xml-events&quot;.
+        /// </summary>
+        internal static string SVGStart {
+            get {
+                return ResourceManager.GetString("SVGStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Ungroup {

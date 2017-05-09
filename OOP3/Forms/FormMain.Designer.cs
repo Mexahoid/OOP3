@@ -62,7 +62,6 @@ namespace OOP3
             this.CtrlTSMain = new System.Windows.Forms.MenuStrip();
             this.CtrlTSMIFile = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMINew = new System.Windows.Forms.ToolStripMenuItem();
-            this.CtrlTSMIOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMISave = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMIFiller = new System.Windows.Forms.ToolStripSeparator();
             this.CtrlTSMIClose = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +69,6 @@ namespace OOP3
             this.CtrlTSMIUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMIRedo = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMIHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.CtrlTSMILoadFigures = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlPanelMain = new System.Windows.Forms.Panel();
             this.CtrlGrBTools = new System.Windows.Forms.GroupBox();
             this.CtrlButArea = new System.Windows.Forms.Button();
@@ -99,8 +97,7 @@ namespace OOP3
             this.CtrlTSMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CtrlTSMIFile,
             this.CtrlTSMIEdit,
-            this.CtrlTSMIHelp,
-            this.CtrlTSMILoadFigures});
+            this.CtrlTSMIHelp});
             this.CtrlTSMain.Location = new System.Drawing.Point(0, 0);
             this.CtrlTSMain.Name = "CtrlTSMain";
             this.CtrlTSMain.Size = new System.Drawing.Size(836, 24);
@@ -111,7 +108,6 @@ namespace OOP3
             // 
             this.CtrlTSMIFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CtrlTSMINew,
-            this.CtrlTSMIOpen,
             this.CtrlTSMISave,
             this.CtrlTSMIFiller,
             this.CtrlTSMIClose});
@@ -127,16 +123,9 @@ namespace OOP3
             this.CtrlTSMINew.Text = "Новый";
             this.CtrlTSMINew.Click += new System.EventHandler(this.CtrlTSMINew_Click);
             // 
-            // CtrlTSMIOpen
-            // 
-            this.CtrlTSMIOpen.Name = "CtrlTSMIOpen";
-            this.CtrlTSMIOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.CtrlTSMIOpen.Size = new System.Drawing.Size(172, 22);
-            this.CtrlTSMIOpen.Text = "Открыть";
-            this.CtrlTSMIOpen.Click += new System.EventHandler(this.CtrlTSMIOpen_Click);
-            // 
             // CtrlTSMISave
             // 
+            this.CtrlTSMISave.Enabled = false;
             this.CtrlTSMISave.Name = "CtrlTSMISave";
             this.CtrlTSMISave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.CtrlTSMISave.Size = new System.Drawing.Size(172, 22);
@@ -186,19 +175,13 @@ namespace OOP3
             this.CtrlTSMIHelp.Text = "Помощь";
             this.CtrlTSMIHelp.Click += new System.EventHandler(this.CtrlTSMIHelp_Click);
             // 
-            // CtrlTSMILoadFigures
-            // 
-            this.CtrlTSMILoadFigures.Name = "CtrlTSMILoadFigures";
-            this.CtrlTSMILoadFigures.Size = new System.Drawing.Size(119, 20);
-            this.CtrlTSMILoadFigures.Text = "Загрузить фигуры";
-            this.CtrlTSMILoadFigures.Click += new System.EventHandler(this.CtrlTSMILoadFigures_Click);
-            // 
             // CtrlPanelMain
             // 
             this.CtrlPanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CtrlPanelMain.BackColor = System.Drawing.Color.White;
+            this.CtrlPanelMain.Enabled = false;
             this.CtrlPanelMain.Location = new System.Drawing.Point(129, 27);
             this.CtrlPanelMain.Name = "CtrlPanelMain";
             this.CtrlPanelMain.Size = new System.Drawing.Size(523, 581);
@@ -347,8 +330,7 @@ namespace OOP3
             "Dash",
             "Dot",
             "DashDot",
-            "DashDotDot",
-            "Custom"});
+            "DashDotDot"});
             this.CtrlLBDashStyles.Location = new System.Drawing.Point(6, 163);
             this.CtrlLBDashStyles.Name = "CtrlLBDashStyles";
             this.CtrlLBDashStyles.Size = new System.Drawing.Size(100, 69);
@@ -361,13 +343,12 @@ namespace OOP3
             this.CtrlLBFillStyles.Items.AddRange(new object[] {
             "Solid",
             "Horizontal",
-            "Min",
             "Vertical",
             "ForwardDiagonal",
             "BackwardDiagonal",
             "Cross",
+            "Cross 2",
             "LargeGrid",
-            "Max",
             "DiagonalCross",
             "Percent05",
             "Percent10",
@@ -514,7 +495,6 @@ namespace OOP3
         private MenuStrip CtrlTSMain;
         private ToolStripMenuItem CtrlTSMIFile;
         private ToolStripMenuItem CtrlTSMINew;
-        private ToolStripMenuItem CtrlTSMIOpen;
         private ToolStripMenuItem CtrlTSMISave;
         private ToolStripSeparator CtrlTSMIFiller;
         private ToolStripMenuItem CtrlTSMIClose;
@@ -523,7 +503,6 @@ namespace OOP3
         private ToolStripMenuItem CtrlTSMIRedo;
         private ToolStripMenuItem CtrlTSMIHelp;
         private Panel CtrlPanelMain;
-        private ToolStripMenuItem CtrlTSMILoadFigures;
         private GroupBox CtrlGrBTools;
         private Button CtrlButRect;
         private Button CtrlButEll;

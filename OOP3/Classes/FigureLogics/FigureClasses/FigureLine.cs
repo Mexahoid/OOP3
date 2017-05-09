@@ -123,5 +123,10 @@ namespace OOP3
                     Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
             g.DrawLine(_cc.GetPen(), Corners[0, 3 - _from], Corners[1, 3 - _from], Corners[0, 3 - _to], Corners[1, 3 -_to]);
         }
+
+        public override void Save(ref string Text, XYIJ II, XYIJ JJ)
+        {
+
+        }
     }
 }

@@ -21,70 +21,76 @@ namespace OOP3
             CtrlLBFillStyles.SelectedIndex = 0;
             CtrlLBDashStyles.SelectedIndex = 0;
             _currentColorScheme = new ColorScheme();
-            _currentColorScheme.Hatches = (HatchStyle[])Enum.GetValues(typeof(HatchStyle));
-            _currentColorScheme.Dashes = (DashStyle[])Enum.GetValues(typeof(DashStyle));
-            _currentColorScheme.ColorBackground = Color.White;
-            _currentColorScheme.ColorForeground = Color.Black;
-            _currentColorScheme.Width = 1;
-            _controller = new FigureController(new PictureClass(CtrlPanelMain));
-            _controller.CurrentColorScheme = _currentColorScheme;
+            _currentColorScheme.Init();
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint, true);
         }
 
         private void CtrlTSMINew_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void CtrlTSMIOpen_Click(object sender, EventArgs e)
-        {
-
+            int[] Dims = new int[2];
+            using (FormNew FN = new FormNew(Dims))
+            {
+                if (FN.ShowDialog() == DialogResult.OK)
+                {
+                    CtrlPanelMain.Width = Dims[1];
+                    CtrlPanelMain.Height = Dims[0];
+                    CtrlPanelMain.Enabled = true;
+                    CtrlTSMISave.Enabled = true;
+                    _controller = new FigureController(new PictureClass(CtrlPanelMain));
+                    _controller.CurrentColorScheme = _currentColorScheme;
+                }
+            }
         }
 
         private void CtrlTSMISave_Click(object sender, EventArgs e)
         {
-
+            if (_controller != null)
+                using (SaveFileDialog SFD = new SaveFileDialog())
+                    if (SFD.ShowDialog() == DialogResult.OK)
+                        _controller.Save(SFD.FileName);
         }
 
         private void CtrlTSMIClose_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void CtrlTSMILoadFigures_Click(object sender, EventArgs e)
-        {
-
+            Close();
         }
 
         private void CtrlPanelMain_MouseMove(object sender, MouseEventArgs e)
         {
-            _controller.Action_MouseMove(e.X, e.Y);
+            if (_controller != null)
+                _controller.Action_MouseMove(e.X, e.Y);
         }
 
         private void CtrlPanelMain_MouseDown(object sender, MouseEventArgs e)
         {
-            _controller.Action_MouseDown(e.X, e.Y);
+            if (_controller != null)
+                _controller.Action_MouseDown(e.X, e.Y);
         }
 
         private void CtrlPanelMain_MouseUp(object sender, MouseEventArgs e)
         {
-            _controller.Action_MouseUp(e.X, e.Y);
+            if (_controller != null)
+                _controller.Action_MouseUp(e.X, e.Y);
         }
 
         private void CtrlButTool_Click(object sender, EventArgs e)
         {
-            _controller.ToolIndex = Convert.ToInt32((sender as Button).Tag);
+            if (_controller != null)
+                _controller.ToolIndex = Convert.ToInt32((sender as Button).Tag);
         }
 
         private void CtrlButSpecial_Click(object sender, EventArgs e)
         {
-            _controller.SpecialIndex = Convert.ToInt32((sender as Button).Tag);
-            _controller.Action_Special();
+            if (_controller != null)
+            {
+                _controller.SpecialIndex = Convert.ToInt32((sender as Button).Tag);
+                _controller.Action_Special();
+            }
         }
 
         private void StyleChange(object sender, EventArgs e)
         {
-            _currentColorScheme.SelectedFillIndex = CtrlLBFillStyles.SelectedIndex;
+            _currentColorScheme["Hatches"] = CtrlLBFillStyles.SelectedIndex;
         }
 
         private void ColorChange(object sender, EventArgs e)
@@ -97,14 +103,20 @@ namespace OOP3
                         if (CD.ShowDialog() == DialogResult.OK)
                         {
                             if ((sender as Control).Tag.Equals("0"))
-                                CtrlButColFG.BackColor = _currentColorScheme.ColorForeground = CD.Color;
+                            {
+                                CtrlButColFG.BackColor = CD.Color;
+                                _currentColorScheme["FGColor"] = CD.Color;
+                            }
                             else
-                                CtrlButColBG.BackColor = _currentColorScheme.ColorBackground = CD.Color;
+                            {
+                                CtrlButColBG.BackColor = CD.Color;
+                                _currentColorScheme["BGColor"] = CD.Color;
+                            }
                         }
                     }
-                _currentColorScheme.SelectedFillIndex = CtrlLBFillStyles.SelectedIndex;
-                _currentColorScheme.SelectedDashIndex = CtrlLBDashStyles.SelectedIndex;
-                _currentColorScheme.Width = (int)CtrlNudWidth.Value;
+                _currentColorScheme["Hatches"] = CtrlLBFillStyles.SelectedIndex;
+                _currentColorScheme["Dashes"] = CtrlLBDashStyles.SelectedIndex;
+                _currentColorScheme["Width"] = (int)CtrlNudWidth.Value;
                 _controller.CurrentColorScheme = _currentColorScheme;
             }
         }

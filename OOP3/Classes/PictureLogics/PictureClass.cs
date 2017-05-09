@@ -8,6 +8,7 @@ using System.Windows.Forms;
 namespace OOP3
 {
     public delegate void DrawerDelegate(int[,] Corners, Graphics g);
+    public delegate int XYIJ(double XY);
 
     class PictureClass
     {
@@ -88,6 +89,17 @@ namespace OOP3
         public Tuple<double, double> GetPoint(Tuple<int, int> T)
         {
             return Tuple.Create(XX(T.Item1), YY(T.Item2));
+        }
+        public Tuple<int, int> GetDims()
+        {
+            return Tuple.Create(I2, J2);
+        }
+        public XYIJ GetDel(bool flag)
+        {
+            if (flag)
+                return II;
+            else
+                return JJ;
         }
     }
 }
