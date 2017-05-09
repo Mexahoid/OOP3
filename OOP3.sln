@@ -1,15 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP3", "OOP3\OOP3.csproj", "{DCCC23EA-8B09-439C-A1E1-C0C43F7C03AB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FigureEllipseLib", "FigureEllipse\FigureEllipseLib.csproj", "{8EE14ADC-2DF7-4949-8201-5206AA5024ED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FigureRectangleLib", "FigureRectangle\FigureRectangleLib.csproj", "{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FigureLineLib", "FigureLine\FigureLineLib.csproj", "{7F46CC65-CE73-4FE7-B04C-6C7B16775157}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{81198FD6-37C1-45FC-9362-E91952719B6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,38 +19,6 @@ Global
 		{DCCC23EA-8B09-439C-A1E1-C0C43F7C03AB}.Release|Any CPU.ActiveCfg = Release|x86
 		{DCCC23EA-8B09-439C-A1E1-C0C43F7C03AB}.Release|x86.ActiveCfg = Release|x86
 		{DCCC23EA-8B09-439C-A1E1-C0C43F7C03AB}.Release|x86.Build.0 = Release|x86
-		{8EE14ADC-2DF7-4949-8201-5206AA5024ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EE14ADC-2DF7-4949-8201-5206AA5024ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EE14ADC-2DF7-4949-8201-5206AA5024ED}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8EE14ADC-2DF7-4949-8201-5206AA5024ED}.Debug|x86.Build.0 = Debug|Any CPU
-		{8EE14ADC-2DF7-4949-8201-5206AA5024ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EE14ADC-2DF7-4949-8201-5206AA5024ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EE14ADC-2DF7-4949-8201-5206AA5024ED}.Release|x86.ActiveCfg = Release|Any CPU
-		{8EE14ADC-2DF7-4949-8201-5206AA5024ED}.Release|x86.Build.0 = Release|Any CPU
-		{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}.Debug|x86.Build.0 = Debug|Any CPU
-		{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}.Release|x86.ActiveCfg = Release|Any CPU
-		{9EB1660A-DA3B-454C-9558-9E0C8A6EA008}.Release|x86.Build.0 = Release|Any CPU
-		{7F46CC65-CE73-4FE7-B04C-6C7B16775157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F46CC65-CE73-4FE7-B04C-6C7B16775157}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F46CC65-CE73-4FE7-B04C-6C7B16775157}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7F46CC65-CE73-4FE7-B04C-6C7B16775157}.Debug|x86.Build.0 = Debug|Any CPU
-		{7F46CC65-CE73-4FE7-B04C-6C7B16775157}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F46CC65-CE73-4FE7-B04C-6C7B16775157}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F46CC65-CE73-4FE7-B04C-6C7B16775157}.Release|x86.ActiveCfg = Release|Any CPU
-		{7F46CC65-CE73-4FE7-B04C-6C7B16775157}.Release|x86.Build.0 = Release|Any CPU
-		{81198FD6-37C1-45FC-9362-E91952719B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81198FD6-37C1-45FC-9362-E91952719B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81198FD6-37C1-45FC-9362-E91952719B6C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{81198FD6-37C1-45FC-9362-E91952719B6C}.Debug|x86.Build.0 = Debug|Any CPU
-		{81198FD6-37C1-45FC-9362-E91952719B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81198FD6-37C1-45FC-9362-E91952719B6C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81198FD6-37C1-45FC-9362-E91952719B6C}.Release|x86.ActiveCfg = Release|Any CPU
-		{81198FD6-37C1-45FC-9362-E91952719B6C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

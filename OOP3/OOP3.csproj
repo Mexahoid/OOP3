@@ -97,11 +97,11 @@
     <None Include="Resources\Group.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Новая папка\Arrow.png" />
-    <None Include="Resources\Новая папка\Ellipse.png" />
-    <None Include="Resources\Новая папка\Line.png" />
-    <None Include="Resources\Новая папка\Rectangle.png" />
-    <None Include="Resources\Новая папка\Selection.png" />
+    <None Include="Resources\Arrow.png" />
+    <None Include="Resources\Ellipse.png" />
+    <None Include="Resources\Line.png" />
+    <None Include="Resources\Rectangle.png" />
+    <None Include="Resources\Selection.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ungroup.png" />
