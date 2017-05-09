@@ -27,10 +27,10 @@ namespace OOP3
         public override void Save(ref string Text, XYIJ II, XYIJ JJ)
         {
             Text += "<rect" +
-                " x=\"" + II(_corners[0,0]) + "\"" +
-                " y=\"" + JJ(_corners[1, 0]) + "\"" +
-                " width=\"" + Math.Abs(II(_corners[0, 0]) - II(_corners[0,2])) + "\"" +
-                " height=\"" + Math.Abs(JJ(_corners[1, 0]) - JJ(_corners[1, 2])) + "\"" +
+                " x=\"" + _corners[0, 0] + "\"" +
+                " y=\"" + _corners[1, 0] + "\"" +
+                " width=\"" +  Math.Abs(_corners[0, 0] - _corners[0, 2]) + "\"" +
+                " height=\"" + Math.Abs(_corners[1, 0] - _corners[1, 2]) + "\"" +
                 _cc["Width"] + 
                 _cc["FGColor"] +
                 _cc["BGColor"] +
