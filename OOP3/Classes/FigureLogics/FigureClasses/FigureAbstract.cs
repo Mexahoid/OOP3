@@ -276,13 +276,11 @@ namespace OOP3
 
         protected abstract void _Drawer(int[,] Corners, Graphics g);
 
-        public abstract void Save(ref string Text, XYIJ II, XYIJ JJ);
+        public abstract void Save(ref string Text);
 
         object ICloneable.Clone()
         {
             return Clone();
         }
-
-
     }
 }

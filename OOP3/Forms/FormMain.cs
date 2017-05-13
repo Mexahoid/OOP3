@@ -18,7 +18,6 @@ namespace OOP3
         public MainForm()
         {
             InitializeComponent();
-            CtrlLBFillStyles.SelectedIndex = 0;
             CtrlLBDashStyles.SelectedIndex = 0;
             _currentColorScheme = new ColorScheme();
             _currentColorScheme.Init();
@@ -88,11 +87,6 @@ namespace OOP3
             }
         }
 
-        private void StyleChange(object sender, EventArgs e)
-        {
-            _currentColorScheme["Hatches"] = CtrlLBFillStyles.SelectedIndex;
-        }
-
         private void ColorChange(object sender, EventArgs e)
         {
             if (_controller != null)
@@ -114,7 +108,6 @@ namespace OOP3
                             }
                         }
                     }
-                _currentColorScheme["Hatches"] = CtrlLBFillStyles.SelectedIndex;
                 _currentColorScheme["Dashes"] = CtrlLBDashStyles.SelectedIndex;
                 _currentColorScheme["Width"] = (int)CtrlNudWidth.Value;
                 _controller.CurrentColorScheme = _currentColorScheme;

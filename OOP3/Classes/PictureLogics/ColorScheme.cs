@@ -19,23 +19,17 @@ namespace OOP3
         private Color _colorBackground;
         private Color _colorForeground;
         private DashStyle[] _dashes;
-        private HatchStyle[] _hatches;
-        private int _selectedFillIndex;
         private int _selectedDashIndex;
         private int _width;
-        
+
 
         public Brush GetBrush()
         {
-            if (_selectedFillIndex == 0)
-                return new SolidBrush(_colorBackground);
-            else
-                return new HatchBrush(_hatches[_selectedFillIndex], _colorForeground, _colorBackground);
+            return new SolidBrush(_colorBackground);
         }
 
         public void Init()
         {
-            _hatches = (HatchStyle[])Enum.GetValues(typeof(HatchStyle));
             _dashes = (DashStyle[])Enum.GetValues(typeof(DashStyle));
             _colorBackground = Color.White;
             _colorForeground = Color.Black;
@@ -65,16 +59,14 @@ namespace OOP3
                             case 0:
                                 return "";
                             case 1:
-                                return "stroke-dasharray: "+ _width * 3 +";";
+                                return "stroke-dasharray: " + _width * 3 + ";";
                             case 2:
-                                return "stroke-dasharray: "+ _width +";";
-                            case 3:                        
-                                return "stroke-dasharray: "+ _width * 3 + " " + _width + ";";
-                            case 4:                                      
-                                return "stroke-dasharray: "+ _width * 3 + " " + _width + " " + _width + ";";
+                                return "stroke-dasharray: " + _width + ";";
+                            case 3:
+                                return "stroke-dasharray: " + _width * 3 + " " + _width + ";";
+                            case 4:
+                                return "stroke-dasharray: " + _width * 3 + " " + _width + " " + _width + ";";
                         }
-                        return "";
-                    case "Hatches":  //Тип заливки
                         return "";
                     case "Width":    //Ширина
                         return " stroke-width: " + _width + ";";
@@ -94,9 +86,6 @@ namespace OOP3
                         break;
                     case "Dashes":   //Тип дэшей
                         _selectedDashIndex = (int)value;
-                        break;
-                    case "Hatches":  //Тип заливки
-                        _selectedFillIndex = (int)value;
                         break;
                     case "Width":    //Ширина
                         _width = (int)value;

@@ -208,7 +208,9 @@ namespace OOP3
             }
             else
             {
-                if (_figures[_selectedFigureIndex].GetType() == typeof(FigureComplex))
+
+                if (_selectedFigureIndex != -1 &&
+                    _figures[_selectedFigureIndex].GetType() == typeof(FigureComplex))
                 {
                     Figures = (_figures[_selectedFigureIndex] as FigureComplex).Decompose();
                     int C = Figures.Count;
@@ -289,11 +291,9 @@ namespace OOP3
             Tuple<int, int> T = _picture.GetDims();
             Out += "\nheight = \"" + T.Item2 + "px\"  width = \"" + T.Item1 + "px\">\n";
             int C = _figures.Count;
-            XYIJ II = _picture.GetDel(true);
-            XYIJ JJ = _picture.GetDel(false);
             for (int i = 0; i < C; i++)
             {
-                _figures[i].Save(ref Out, II, JJ);
+                _figures[i].Save(ref Out);
             }
             Out += "</svg>";
             using (StreamWriter SW = new StreamWriter(Path))

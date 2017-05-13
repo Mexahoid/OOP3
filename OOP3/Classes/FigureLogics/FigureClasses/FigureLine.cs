@@ -124,9 +124,18 @@ namespace OOP3
             g.DrawLine(_cc.GetPen(), Corners[0, 3 - _from], Corners[1, 3 - _from], Corners[0, 3 - _to], Corners[1, 3 -_to]);
         }
 
-        public override void Save(ref string Text, XYIJ II, XYIJ JJ)
+        public override void Save(ref string Text)
         {
-
+            Text += "<line" +
+                " x1=\"" + _corners[0, _from] + "\"" +
+                " y1=\"" + _corners[1, _from] + "\"" +
+                " x2=\"" + _corners[0, _to] + "\"" +
+                " y2=\"" + _corners[1, _to] + "\"" +
+                " style=\"" +
+                _cc["Width"] + '\n' +
+                _cc["FGColor"] + '\n' +
+                _cc["Dashes"] + '\n' +
+                "\"/>\n";
         }
     }
 }

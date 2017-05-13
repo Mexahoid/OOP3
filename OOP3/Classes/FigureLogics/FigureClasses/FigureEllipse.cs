@@ -29,9 +29,19 @@ namespace OOP3
                 Math.Abs(Corners[0, 2] - Corners[0, 0]), Math.Abs(Corners[1, 2] - Corners[1, 0]));
         }
 
-        public override void Save(ref string Text, XYIJ II, XYIJ JJ)
+        public override void Save(ref string Text)
         {
-
+            Text += "<ellipse" +
+                " cx=\"" + (_corners[0, 0] + _corners[0,2]) / 2 + "\"" +
+                " cy=\"" + (_corners[1, 3] + _corners[1,0]) / 2 + "\"" +
+                " rx=\"" + Math.Abs(_corners[0, 0] - _corners[0, 2]) / 2 + "\"" +
+                " ry=\"" + Math.Abs(_corners[1, 0] - _corners[1, 2]) / 2 + "\"" +
+                " style=\"" +
+                _cc["Width"] + '\n' +
+                _cc["FGColor"] + '\n' +
+                _cc["BGColor"] + '\n' +
+                _cc["Dashes"] + '\n' +
+                "\"/>\n";
         }
     }
 }

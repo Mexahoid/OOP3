@@ -79,9 +79,7 @@ namespace OOP3
             this.CtrlGrBSpecials = new System.Windows.Forms.GroupBox();
             this.CtrlButColFG = new System.Windows.Forms.Button();
             this.CtrlLblMisc2 = new System.Windows.Forms.Label();
-            this.CtrlLblMisc1 = new System.Windows.Forms.Label();
             this.CtrlLBDashStyles = new System.Windows.Forms.ListBox();
-            this.CtrlLBFillStyles = new System.Windows.Forms.ListBox();
             this.CtrlNudWidth = new System.Windows.Forms.NumericUpDown();
             this.CtrlButColBG = new System.Windows.Forms.Button();
             this.CtrlButUngroup = new System.Windows.Forms.Button();
@@ -278,16 +276,14 @@ namespace OOP3
             // 
             this.CtrlGrBSpecials.Controls.Add(this.CtrlButColFG);
             this.CtrlGrBSpecials.Controls.Add(this.CtrlLblMisc2);
-            this.CtrlGrBSpecials.Controls.Add(this.CtrlLblMisc1);
             this.CtrlGrBSpecials.Controls.Add(this.CtrlLBDashStyles);
-            this.CtrlGrBSpecials.Controls.Add(this.CtrlLBFillStyles);
             this.CtrlGrBSpecials.Controls.Add(this.CtrlNudWidth);
             this.CtrlGrBSpecials.Controls.Add(this.CtrlButColBG);
             this.CtrlGrBSpecials.Controls.Add(this.CtrlButUngroup);
             this.CtrlGrBSpecials.Controls.Add(this.CtrlButGroup);
             this.CtrlGrBSpecials.Location = new System.Drawing.Point(658, 30);
             this.CtrlGrBSpecials.Name = "CtrlGrBSpecials";
-            this.CtrlGrBSpecials.Size = new System.Drawing.Size(166, 340);
+            this.CtrlGrBSpecials.Size = new System.Drawing.Size(166, 152);
             this.CtrlGrBSpecials.TabIndex = 3;
             this.CtrlGrBSpecials.TabStop = false;
             this.CtrlGrBSpecials.Text = "Опции";
@@ -296,7 +292,7 @@ namespace OOP3
             // 
             this.CtrlButColFG.BackColor = System.Drawing.Color.Black;
             this.CtrlButColFG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CtrlButColFG.Location = new System.Drawing.Point(6, 238);
+            this.CtrlButColFG.Location = new System.Drawing.Point(95, 16);
             this.CtrlButColFG.Name = "CtrlButColFG";
             this.CtrlButColFG.Size = new System.Drawing.Size(50, 50);
             this.CtrlButColFG.TabIndex = 1;
@@ -307,20 +303,11 @@ namespace OOP3
             // CtrlLblMisc2
             // 
             this.CtrlLblMisc2.AutoSize = true;
-            this.CtrlLblMisc2.Location = new System.Drawing.Point(6, 147);
+            this.CtrlLblMisc2.Location = new System.Drawing.Point(6, 56);
             this.CtrlLblMisc2.Name = "CtrlLblMisc2";
             this.CtrlLblMisc2.Size = new System.Drawing.Size(83, 13);
             this.CtrlLblMisc2.TabIndex = 10;
             this.CtrlLblMisc2.Text = "Стиль границы";
-            // 
-            // CtrlLblMisc1
-            // 
-            this.CtrlLblMisc1.AutoSize = true;
-            this.CtrlLblMisc1.Location = new System.Drawing.Point(6, 56);
-            this.CtrlLblMisc1.Name = "CtrlLblMisc1";
-            this.CtrlLblMisc1.Size = new System.Drawing.Size(82, 13);
-            this.CtrlLblMisc1.TabIndex = 9;
-            this.CtrlLblMisc1.Text = "Стиль заливки";
             // 
             // CtrlLBDashStyles
             // 
@@ -331,81 +318,15 @@ namespace OOP3
             "Dot",
             "DashDot",
             "DashDotDot"});
-            this.CtrlLBDashStyles.Location = new System.Drawing.Point(6, 163);
+            this.CtrlLBDashStyles.Location = new System.Drawing.Point(6, 72);
             this.CtrlLBDashStyles.Name = "CtrlLBDashStyles";
             this.CtrlLBDashStyles.Size = new System.Drawing.Size(100, 69);
             this.CtrlLBDashStyles.TabIndex = 8;
             this.CtrlLBDashStyles.SelectedIndexChanged += new System.EventHandler(this.ColorChange);
             // 
-            // CtrlLBFillStyles
-            // 
-            this.CtrlLBFillStyles.FormattingEnabled = true;
-            this.CtrlLBFillStyles.Items.AddRange(new object[] {
-            "Solid",
-            "Horizontal",
-            "Vertical",
-            "ForwardDiagonal",
-            "BackwardDiagonal",
-            "Cross",
-            "Cross 2",
-            "LargeGrid",
-            "DiagonalCross",
-            "Percent05",
-            "Percent10",
-            "Percent20",
-            "Percent25",
-            "Percent30",
-            "Percent40",
-            "Percent50",
-            "Percent60",
-            "Percent70",
-            "Percent75",
-            "Percent80",
-            "Percent90",
-            "LightDownwardDiagonal",
-            "LightUpwardDiagonal",
-            "DarkDownwardDiagonal",
-            "DarkUpwardDiagonal",
-            "WideDownwardDiagonal",
-            "WideUpwardDiagonal",
-            "LightVertical",
-            "LightHorizontal",
-            "NarrowVertical",
-            "NarrowHorizontal",
-            "DarkVertical",
-            "DarkHorizontal",
-            "DashedDownwardDiagonal",
-            "DashedUpwardDiagonal",
-            "DashedHorizontal",
-            "DashedVertical",
-            "SmallConfetti",
-            "LargeConfetti",
-            "ZigZag",
-            "Wave",
-            "DiagonalBrick",
-            "HorizontalBrick",
-            "Weave",
-            "Plaid",
-            "Divot",
-            "DottedGrid",
-            "DottedDiamond",
-            "Shingle",
-            "Trellis",
-            "Sphere",
-            "SmallGrid",
-            "SmallCheckerBoard",
-            "LargeCheckerBoard",
-            "OutlinedDiamond",
-            "SolidDiamond"});
-            this.CtrlLBFillStyles.Location = new System.Drawing.Point(6, 72);
-            this.CtrlLBFillStyles.Name = "CtrlLBFillStyles";
-            this.CtrlLBFillStyles.Size = new System.Drawing.Size(100, 69);
-            this.CtrlLBFillStyles.TabIndex = 7;
-            this.CtrlLBFillStyles.SelectedIndexChanged += new System.EventHandler(this.ColorChange);
-            // 
             // CtrlNudWidth
             // 
-            this.CtrlNudWidth.Location = new System.Drawing.Point(118, 58);
+            this.CtrlNudWidth.Location = new System.Drawing.Point(112, 81);
             this.CtrlNudWidth.Maximum = new decimal(new int[] {
             20,
             0,
@@ -431,7 +352,7 @@ namespace OOP3
             this.CtrlButColBG.BackColor = System.Drawing.Color.White;
             this.CtrlButColBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CtrlButColBG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CtrlButColBG.Location = new System.Drawing.Point(25, 260);
+            this.CtrlButColBG.Location = new System.Drawing.Point(110, 25);
             this.CtrlButColBG.Name = "CtrlButColBG";
             this.CtrlButColBG.Size = new System.Drawing.Size(50, 50);
             this.CtrlButColBG.TabIndex = 0;
@@ -514,11 +435,9 @@ namespace OOP3
         private Button CtrlButGroup;
         private Button CtrlButColBG;
         private Button CtrlButColFG;
-        private ListBox CtrlLBFillStyles;
         private NumericUpDown CtrlNudWidth;
         private ListBox CtrlLBDashStyles;
         private Label CtrlLblMisc2;
-        private Label CtrlLblMisc1;
     }
 }
 
