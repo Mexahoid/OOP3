@@ -8,7 +8,6 @@ using System.Windows.Forms;
 namespace OOP3
 {
     public delegate void DrawerDelegate(int[,] Corners, Graphics g);
-    public delegate int XYIJ(double XY);
 
     class PictureClass
     {
@@ -40,7 +39,7 @@ namespace OOP3
             _temp.Clear(Color.White);
         }
 
-        public void DrawFigure(DrawerDelegate Del, double[,] Corners)
+        public void DrawFigure(DrawerDelegate Del, Coordinates Corners)
         {
             int[,] corners = new int[2, 4];
             for (int i = 0; i < 4; i++)
@@ -94,13 +93,6 @@ namespace OOP3
         public Tuple<int, int> GetDims()
         {
             return Tuple.Create(I2, J2);
-        }
-        public XYIJ GetDel(bool flag)
-        {
-            if (flag)
-                return II;
-            else
-                return JJ;
         }
     }
 }

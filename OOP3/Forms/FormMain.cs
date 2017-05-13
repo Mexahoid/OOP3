@@ -75,7 +75,10 @@ namespace OOP3
         private void CtrlButTool_Click(object sender, EventArgs e)
         {
             if (_controller != null)
+            {
                 _controller.ToolIndex = Convert.ToInt32((sender as Button).Tag);
+                _controller.SpecialIndex = -3;
+            }
         }
 
         private void CtrlButSpecial_Click(object sender, EventArgs e)

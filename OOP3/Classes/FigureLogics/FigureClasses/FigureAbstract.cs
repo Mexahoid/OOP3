@@ -30,7 +30,7 @@ namespace OOP3
 
         #endregion
 
-        protected double[,] _corners;
+        protected Coordinates _corners;
         protected PictureClass _picController;
         protected bool _selected;
         protected int _selectedPoint;
@@ -42,7 +42,7 @@ namespace OOP3
 
         protected FigureAbstract(PictureClass PictureController, ColorScheme ColorScheme)
         {
-            _corners = new double[2, 4];
+            _corners = new Coordinates();
             _selected = false;
             _picController = PictureController;
             _cc = ColorScheme;
@@ -55,7 +55,7 @@ namespace OOP3
                     (_corners[1, 2] - Eps <= Y) && (Y <= _corners[1, 0] + Eps);
         }
 
-        public double[,] GetPoints()
+        public Coordinates GetPoints()
         {
             return _corners;
         }
@@ -217,11 +217,11 @@ namespace OOP3
 
         public virtual void MoveObj(double dx, double dy)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                _corners[0, i] += dx;
-                _corners[1, i] += dy;
-            }
+            
+                _corners[0, 0] += dx;
+                _corners[1, 0] += dy;
+            _corners[0, 2] += dx;
+            _corners[1, 2] += dy;
         }
 
         public abstract void Draw();
@@ -244,7 +244,6 @@ namespace OOP3
 
         public FigureAbstract Clone()
         {
-            _corners = new double[2, 4];
             return (FigureAbstract)MemberwiseClone();
         }
 
@@ -277,6 +276,7 @@ namespace OOP3
         protected abstract void _Drawer(int[,] Corners, Graphics g);
 
         public abstract void Save(ref string Text);
+
 
         object ICloneable.Clone()
         {

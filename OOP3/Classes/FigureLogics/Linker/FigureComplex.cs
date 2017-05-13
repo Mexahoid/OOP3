@@ -35,7 +35,7 @@ namespace OOP3
             double xMin = double.MaxValue;
             double yMin = double.MaxValue;
             int C = _figures.Count;
-            double[,] Temp;
+            Coordinates Temp;
             for (int j = 0; j < C; j++)
             {
                 Temp = _figures[j].GetPoints();

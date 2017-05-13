@@ -59,6 +59,7 @@ namespace OOP3
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.CtrlTSMain = new System.Windows.Forms.MenuStrip();
             this.CtrlTSMIFile = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMINew = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +72,9 @@ namespace OOP3
             this.CtrlTSMIHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlPanelMain = new System.Windows.Forms.Panel();
             this.CtrlGrBTools = new System.Windows.Forms.GroupBox();
+            this.CtrlButDelete = new System.Windows.Forms.Button();
+            this.CtrlButRedo = new System.Windows.Forms.Button();
+            this.CtrlButUndo = new System.Windows.Forms.Button();
             this.CtrlButArea = new System.Windows.Forms.Button();
             this.CtrlButSel = new System.Windows.Forms.Button();
             this.CtrlButRect = new System.Windows.Forms.Button();
@@ -145,9 +149,6 @@ namespace OOP3
             // 
             // CtrlTSMIEdit
             // 
-            this.CtrlTSMIEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CtrlTSMIUndo,
-            this.CtrlTSMIRedo});
             this.CtrlTSMIEdit.Name = "CtrlTSMIEdit";
             this.CtrlTSMIEdit.Size = new System.Drawing.Size(59, 20);
             this.CtrlTSMIEdit.Text = "Правка";
@@ -190,6 +191,9 @@ namespace OOP3
             // 
             // CtrlGrBTools
             // 
+            this.CtrlGrBTools.Controls.Add(this.CtrlButDelete);
+            this.CtrlGrBTools.Controls.Add(this.CtrlButRedo);
+            this.CtrlGrBTools.Controls.Add(this.CtrlButUndo);
             this.CtrlGrBTools.Controls.Add(this.CtrlButArea);
             this.CtrlGrBTools.Controls.Add(this.CtrlButSel);
             this.CtrlGrBTools.Controls.Add(this.CtrlButRect);
@@ -201,6 +205,48 @@ namespace OOP3
             this.CtrlGrBTools.TabIndex = 0;
             this.CtrlGrBTools.TabStop = false;
             this.CtrlGrBTools.Text = "Инструменты";
+            // 
+            // CtrlButDelete
+            // 
+            this.CtrlButDelete.BackgroundImage = global::OOP3.Properties.Resources.Delete;
+            this.CtrlButDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButDelete.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButDelete.Location = new System.Drawing.Point(70, 127);
+            this.CtrlButDelete.Name = "CtrlButDelete";
+            this.CtrlButDelete.Size = new System.Drawing.Size(26, 25);
+            this.CtrlButDelete.TabIndex = 7;
+            this.CtrlButDelete.Tag = "3";
+            this.CtrlButDelete.UseVisualStyleBackColor = true;
+            this.CtrlButDelete.Click += new System.EventHandler(this.CtrlButSpecial_Click);
+            // 
+            // CtrlButRedo
+            // 
+            this.CtrlButRedo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CtrlButRedo.BackgroundImage")));
+            this.CtrlButRedo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButRedo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButRedo.Location = new System.Drawing.Point(38, 127);
+            this.CtrlButRedo.Name = "CtrlButRedo";
+            this.CtrlButRedo.Size = new System.Drawing.Size(26, 25);
+            this.CtrlButRedo.TabIndex = 6;
+            this.CtrlButRedo.Tag = "-2";
+            this.CtrlButRedo.UseVisualStyleBackColor = true;
+            this.CtrlButRedo.Click += new System.EventHandler(this.CtrlButSpecial_Click);
+            // 
+            // CtrlButUndo
+            // 
+            this.CtrlButUndo.BackgroundImage = global::OOP3.Properties.Resources.Undo;
+            this.CtrlButUndo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CtrlButUndo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.CtrlButUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CtrlButUndo.Location = new System.Drawing.Point(6, 127);
+            this.CtrlButUndo.Name = "CtrlButUndo";
+            this.CtrlButUndo.Size = new System.Drawing.Size(26, 25);
+            this.CtrlButUndo.TabIndex = 5;
+            this.CtrlButUndo.Tag = "2";
+            this.CtrlButUndo.UseVisualStyleBackColor = true;
+            this.CtrlButUndo.Click += new System.EventHandler(this.CtrlButSpecial_Click);
             // 
             // CtrlButArea
             // 
@@ -438,6 +484,9 @@ namespace OOP3
         private NumericUpDown CtrlNudWidth;
         private ListBox CtrlLBDashStyles;
         private Label CtrlLblMisc2;
+        private Button CtrlButUndo;
+        private Button CtrlButRedo;
+        private Button CtrlButDelete;
     }
 }
 

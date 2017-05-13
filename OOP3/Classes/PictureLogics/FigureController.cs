@@ -13,6 +13,7 @@ namespace OOP3
         private PictureClass _picture;
         private List<IFactory> _factories;
         private List<FigureAbstract> _figures;
+        private HistoryList _history;
         private int _toolIndex = -1;
         private int _specialIndex = -1;
         private int _selectedFigureIndex = -1;
@@ -46,6 +47,7 @@ namespace OOP3
             _factories.Add(new FactoryLine(_picture, _currentColorScheme));
             _factories.Add(new FactoryRectangle(_picture, _currentColorScheme));
             _factories.Add(new FactoryComplex(_picture, _currentColorScheme));
+            _history = new HistoryList(_SetFigureState, _GetFigure);
         }
 
         private void _CreateFigure(int x, int y)
@@ -82,13 +84,13 @@ namespace OOP3
         {
             for (int i = _figures.Count - 1; i >= 0; i--)
             {
-                if (_figures[i].CursorIn(_PrevPos.Item1, _PrevPos.Item2))
+                if (_figures[i] != null && _figures[i].CursorIn(_PrevPos.Item1, _PrevPos.Item2))
                 {
                     _figures[i].Selected = true;
                     _selectedFigureIndex = i;
                     for (int j = 0; j < _figures.Count; j++)
                     {
-                        if (i != j)
+                        if (i != j && _figures[j] != null)
                             _figures[j].Selected = false;
                     }
                 }
@@ -171,7 +173,8 @@ namespace OOP3
             int C = _figures.Count;
             for (int i = 0; i < C; i++)
             {
-                _figures[i].Selected = false;
+                if (_figures[i] != null)
+                    _figures[i].Selected = false;
             }
         }
 
@@ -181,7 +184,8 @@ namespace OOP3
             int C = _figures.Count;
             for (int i = 0; i < C; i++)
             {
-                _figures[i].Draw();
+                if (_figures[i] != null)
+                    _figures[i].Draw();
             }
             _picture.FinalDraw();
         }
@@ -224,6 +228,22 @@ namespace OOP3
             }
         }
 
+        private void _HistoryAction()
+        {
+            _history.Action(_specialIndex);
+        }
+
+        private void _SetFigureState(FigureAbstract figure, int pos)
+        {
+            _figures[pos] = figure;
+        }
+
+        private Tuple<FigureAbstract, int> _GetFigure()
+        {
+            //_selectedFigureIndex никогда не будет -1
+            return Tuple.Create(_figures[_selectedFigureIndex].Clone(), _selectedFigureIndex);
+        }
+
         public void Action_MouseDown(int X, int Y)
         {
             _drawing = true;
@@ -233,11 +253,14 @@ namespace OOP3
             if (_toolIndex == -1)
             {
                 _FindFigure(X, Y);
+                if (_selectedFigureIndex != -1)
+                    _history.SelectedFigureBefore = _figures[_selectedFigureIndex].Clone();
                 _Draw();
             }
             else
             {
                 _CreateFigure(X, Y);
+                _selectedFigureIndex = _figures.Count - 1;
             }
         }
         public void Action_MouseMove(int X, int Y)
@@ -267,10 +290,21 @@ namespace OOP3
         public void Action_MouseUp(int X, int Y)
         {
             _drawing = false;
-            if (_toolIndex == -2)
+            switch (_toolIndex)
             {
-                if (_PrevScreenPos.Item1 != X || _PrevScreenPos.Item2 != Y)
-                    _FindFigureInArea(X, Y);
+                case -1:
+                    if (_selectedFigureIndex != -1)
+                        _history.Action(-1);
+                    break;
+                default:
+                    if (_toolIndex == -2)
+                    {
+                        if (_PrevScreenPos.Item1 != X || _PrevScreenPos.Item2 != Y)
+                            _FindFigureInArea(X, Y);
+                    }
+                    else
+                        _history.Action(_specialIndex);
+                    break;
             }
             _Draw();
         }
@@ -282,7 +316,14 @@ namespace OOP3
                 case 1:
                     _GroupAction();
                     break;
+                case 2:
+                case -2:
+                case 3:
+                case -3:
+                    _HistoryAction();
+                    break;
             }
+            _Draw();
         }
 
         public void Save(string Path)
