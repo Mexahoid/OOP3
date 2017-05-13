@@ -11,17 +11,7 @@ namespace OOP3
     {
         public static string GetName(this Color cl)
         {
-            string Before = cl.Name;
-            if (Before.IndexOfAny(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }) != -1)
-            {
-                string Out = "";
-                for (int i = 2; i < 8; i++)
-                {
-                    Out += Before[i];
-                }
-                return "#" + Out;
-            }
-            return Before;
+            return ColorTranslator.ToHtml(cl);
         }
     }
     public struct ColorScheme
@@ -66,28 +56,28 @@ namespace OOP3
                 switch (item)
                 {
                     case "FGColor":  //Цвет обводки
-                        return " stroke=\"" + _colorForeground.GetName().ToLower() + "\"";
+                        return " stroke: " + _colorForeground.GetName() + ";";
                     case "BGColor":  //Цвет заливки
-                        return " fill=\"" + _colorBackground.GetName().ToLower() + "\"";
+                        return " fill: " + _colorBackground.GetName() + ";";
                     case "Dashes":   //Тип дэшей
                         switch (_selectedDashIndex)
                         {
                             case 0:
                                 return "";
                             case 1:
-                                return "stroke-dasharray=\""+ _width * 3 +"\"";
+                                return "stroke-dasharray: "+ _width * 3 +";";
                             case 2:
-                                return "stroke-dasharray=\""+ _width +"\"";
+                                return "stroke-dasharray: "+ _width +";";
                             case 3:                        
-                                return "stroke-dasharray=\""+ _width * 3 + " " + _width + "\"";
+                                return "stroke-dasharray: "+ _width * 3 + " " + _width + ";";
                             case 4:                                      
-                                return "stroke-dasharray=\""+ _width * 3 + " " + _width + " " + _width + "\"";
+                                return "stroke-dasharray: "+ _width * 3 + " " + _width + " " + _width + ";";
                         }
                         return "";
                     case "Hatches":  //Тип заливки
                         return "";
                     case "Width":    //Ширина
-                        return " stroke-width=\"" + _width + "\"";
+                        return " stroke-width: " + _width + ";";
                     default:
                         return "";
                 }

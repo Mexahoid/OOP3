@@ -27,7 +27,8 @@ namespace OOP3
             J2 = panel.Height;
             _tb = new Bitmap(I2, J2);
             _temp = Graphics.FromImage(_tb);
-            xMin = 0; xMax = panel.Width;
+            xMin = 0;
+            xMax = panel.Width;
             int kx = Screen.PrimaryScreen.Bounds.Width;
             int ky = Screen.PrimaryScreen.Bounds.Height;
             yMax = panel.Height;
@@ -67,11 +68,11 @@ namespace OOP3
         }
         private int II(double x)
         {
-            return I1 + (int)((x - xMin) * (I2 - I1) / (xMax - xMin));
+            return (int)((x - xMin) * (I2 - I1) / (xMax - xMin));
         }
         private int JJ(double y)
         {
-            return J1 + (int)((y - yMin) * (J2 - J1) / (yMax - yMin));
+            return (int)((y - yMin) * (J2 - J1) / (yMax - yMin));
         }
         private double XX(int I)
         {

@@ -28,14 +28,15 @@ namespace OOP3
         {
             Text += "<rect" +
                 " x=\"" + _corners[0, 0] + "\"" +
-                " y=\"" + _corners[1, 0] + "\"" +
+                " y=\"" + _corners[1, 3] + "\"" +
                 " width=\"" +  Math.Abs(_corners[0, 0] - _corners[0, 2]) + "\"" +
                 " height=\"" + Math.Abs(_corners[1, 0] - _corners[1, 2]) + "\"" +
-                _cc["Width"] + 
-                _cc["FGColor"] +
-                _cc["BGColor"] +
-                _cc["Dashes"] +
-                "/>\n";
+                " style=\"" +
+                _cc["Width"] + '\n'+
+                _cc["FGColor"] + '\n' +
+                _cc["BGColor"] + '\n' +
+                _cc["Dashes"] + '\n' +
+                "\"/>\n";
         }
     }
 }
