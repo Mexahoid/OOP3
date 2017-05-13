@@ -27,11 +27,11 @@ namespace OOP3
             J2 = panel.Height;
             _tb = new Bitmap(I2, J2);
             _temp = Graphics.FromImage(_tb);
-            xMin = -300 / 8F; xMax = 300 + 300 / 8F;
+            xMin = 0; xMax = panel.Width;
             int kx = Screen.PrimaryScreen.Bounds.Width;
             int ky = Screen.PrimaryScreen.Bounds.Height;
-            yMax = ky * (xMax - xMin) / kx / 2F + 210 / 2F;
-            yMin = -ky * (xMax - xMin) / kx / 2F + 210 / 2F;
+            yMax = panel.Height;
+            yMin = 0;
         }
 
         public void Clear()

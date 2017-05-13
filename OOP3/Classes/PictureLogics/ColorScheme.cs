@@ -13,7 +13,14 @@ namespace OOP3
         {
             string Before = cl.Name;
             if (Before.IndexOfAny(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }) != -1)
-                return "#" + Before;
+            {
+                string Out = "";
+                for (int i = 2; i < 8; i++)
+                {
+                    Out += Before[i];
+                }
+                return "#" + Out;
+            }
             return Before;
         }
     }
@@ -68,13 +75,13 @@ namespace OOP3
                             case 0:
                                 return "";
                             case 1:
-                                return $"stroke-dasharray=\"{_width * 3}\"";
+                                return "stroke-dasharray=\""+ _width * 3 +"\"";
                             case 2:
-                                return $"stroke-dasharray=\"{_width}\"";
-                            case 3:
-                                return $"stroke-dasharray=\"{_width * 3} {_width}\"";
-                            case 4:
-                                return $"stroke-dasharray=\"{_width * 3} {_width} {_width}\"";
+                                return "stroke-dasharray=\""+ _width +"\"";
+                            case 3:                        
+                                return "stroke-dasharray=\""+ _width * 3 + " " + _width + "\"";
+                            case 4:                                      
+                                return "stroke-dasharray=\""+ _width * 3 + " " + _width + " " + _width + "\"";
                         }
                         return "";
                     case "Hatches":  //Тип заливки
