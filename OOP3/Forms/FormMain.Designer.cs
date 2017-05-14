@@ -26,7 +26,28 @@ namespace OOP3
 
         private void CtrlTSMIFiller_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ТюкачDraw ФКН 2017");
+            using (Form f = new Form())
+            {
+                f.Height = 300;
+                f.Width = 182;
+                f.Text = "ТюкачDraw пасхалочка";
+                f.Icon = global::OOP3.Properties.Resources.Logo;
+                f.FormBorderStyle = FormBorderStyle.FixedSingle;
+                f.MinimizeBox = false;
+                f.MaximizeBox = false;
+                PictureBox p = new PictureBox();
+                p.Parent = f;
+                p.Location = new System.Drawing.Point(0, 0);
+                p.Image = global::OOP3.Properties.Resources.Egg;
+                p.Height = 218;
+                p.Width = 182;
+                Button b = new Button();
+                b.Parent = f;
+                b.Dock = DockStyle.Bottom;
+                b.Text = "ФКН продакшен 2017";
+                f.ShowDialog();
+            }
+
         }
 
         private void CtrlTSMIHelp_Click(object sender, EventArgs e)
@@ -67,9 +88,9 @@ namespace OOP3
             this.CtrlTSMIFiller = new System.Windows.Forms.ToolStripSeparator();
             this.CtrlTSMIClose = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMIEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.CtrlTSMIHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMIUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlTSMIRedo = new System.Windows.Forms.ToolStripMenuItem();
-            this.CtrlTSMIHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.CtrlPanelMain = new System.Windows.Forms.Panel();
             this.CtrlGrBTools = new System.Windows.Forms.GroupBox();
             this.CtrlButDelete = new System.Windows.Forms.Button();
@@ -153,6 +174,13 @@ namespace OOP3
             this.CtrlTSMIEdit.Size = new System.Drawing.Size(59, 20);
             this.CtrlTSMIEdit.Text = "Правка";
             // 
+            // CtrlTSMIHelp
+            // 
+            this.CtrlTSMIHelp.Name = "CtrlTSMIHelp";
+            this.CtrlTSMIHelp.Size = new System.Drawing.Size(68, 20);
+            this.CtrlTSMIHelp.Text = "Помощь";
+            this.CtrlTSMIHelp.Click += new System.EventHandler(this.CtrlTSMIHelp_Click);
+            // 
             // CtrlTSMIUndo
             // 
             this.CtrlTSMIUndo.Name = "CtrlTSMIUndo";
@@ -166,13 +194,6 @@ namespace OOP3
             this.CtrlTSMIRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.CtrlTSMIRedo.Size = new System.Drawing.Size(169, 22);
             this.CtrlTSMIRedo.Text = "Вернуть";
-            // 
-            // CtrlTSMIHelp
-            // 
-            this.CtrlTSMIHelp.Name = "CtrlTSMIHelp";
-            this.CtrlTSMIHelp.Size = new System.Drawing.Size(68, 20);
-            this.CtrlTSMIHelp.Text = "Помощь";
-            this.CtrlTSMIHelp.Click += new System.EventHandler(this.CtrlTSMIHelp_Click);
             // 
             // CtrlPanelMain
             // 
@@ -444,6 +465,7 @@ namespace OOP3
             this.Controls.Add(this.CtrlGrBTools);
             this.Controls.Add(this.CtrlPanelMain);
             this.Controls.Add(this.CtrlTSMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.CtrlTSMain;
             this.Name = "MainForm";
             this.Text = "ТюкачDraw";
